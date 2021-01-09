@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Greet from './Components/Greet'
-import AddKitten from './Components/AddKitten';
 import KittenList from './Components/KittenList';
+import PhotoGallery from './Components/PhotoGallery';
 
 class App extends Component {
 render(){
@@ -14,12 +14,12 @@ render(){
        
         <p>
           <Greet></Greet>
-          <AddKitten></AddKitten>
           <KittenList
           name = "fluffy"
           dob = "12"
           
           ></KittenList>
+          <PhotoGallery></PhotoGallery>
         </p>
  
       </header>
