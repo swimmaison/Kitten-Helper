@@ -28,5 +28,5 @@ function chart(props) {
         }, ]
     }
     return <div> <Line data = {data} /></div> ;
-};
+}
 export default chart;

@@ -1,16 +1,18 @@
+import React from 'react';
+
 function table(props){
-    const header = Object.keys(props).map(item => <th>{item}</th>);
+    const header = Object.keys(props).map((item,i) => <th key={i}>{item}</th>);
 
  let tabData;
 for (let i = 0; i<props.dates.length; i++){
     let entries
  header.forEach((column) => {
-     entries.push(<td>{column[i]}</td>) 
+     entries.push(<td key={i}>{props[column][i]}</td>) 
  })
- tabData.push(<tr>{entries}</tr>)
+ tabData.push(<tr key={i}>{entries}</tr>)
 }
 
-return <table class="table">
+return <table className="table">
     <thead>
         <tr>
             {header}
@@ -20,5 +22,5 @@ return <table class="table">
         {tabData}
     </tbody>
 </table>
-};
+}
 export default table
