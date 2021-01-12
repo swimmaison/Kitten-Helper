@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleModal({children}) {
+export default function ModalButton({label, children}) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -46,7 +46,7 @@ export default function SimpleModal({children}) {
   return (
     <div>
       <button type="button" onClick={handleOpen}>
-        Open Modal
+        {label}
       </button>
       <Modal
         open={open}
@@ -54,7 +54,7 @@ export default function SimpleModal({children}) {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-          <div style={modalStyle} className={classes.paper}>
+        <div style={modalStyle} className={classes.paper}>
         {children}
         </div>
       </Modal>
