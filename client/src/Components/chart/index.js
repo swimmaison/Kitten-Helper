@@ -1,7 +1,7 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
 
-function chart(props) {
+export default function Chart(props) {
     const data = {
         labels: props.dates,
         datasets: []
@@ -29,4 +29,3 @@ function chart(props) {
     }
     return <div> <Line data = {data} /></div> ;
 }
-export default chart;
