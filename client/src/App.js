@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Weight from './Pages/Weight'
 
-class App extends Component {
-render(){
+function App(){
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-       <Weight />
+      
  
       </header>
+       <Weight />
     </div>
   );
 };
-}
+
 
 export default App;
