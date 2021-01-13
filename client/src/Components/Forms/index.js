@@ -5,8 +5,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import PoopSelect from '../Inputs';
-import DateSelector from '../Inputs';
+import { PoopSelect, DateSelector }  from '../Inputs';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function NewKittenForm(){
+  const classes = useStyles();
   const [state, setState] = React.useState({
     checkedA: true,
     checkedB: true,
@@ -32,7 +32,7 @@ export function NewKittenForm(){
   };
 
   return <form>
-    <FormControl>
+    <FormControl className={classes.formControl}>
       <TextField id="standard-required" label="Required" defaultValue="Hello World" />
       <TextField id="standard-required" label="Required" defaultValue="Hello World" />
       <DateSelector />
@@ -44,6 +44,7 @@ export function NewKittenForm(){
   </form>
 }
 export function NewWeightForm(){
+  const classes = useStyles();
   return <form>
     <DateSelector />
     <TextField
@@ -57,6 +58,7 @@ export function NewWeightForm(){
   </form>
 }
 export function NewFeedingForm(){
+  const classes = useStyles();
   return <form>
     <DateSelector />
     <TextField

@@ -5,6 +5,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
+
+
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -14,9 +17,18 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
+  },
 }));
 
-export default function PoopSelect() {
+export function PoopSelect() {
   const classes = useStyles();
   const [poop, setPoop] = React.useState('');
 
@@ -48,5 +60,25 @@ export default function PoopSelect() {
         <FormHelperText>Mark any changes in the kitten's bowel movement</FormHelperText>
       </FormControl>
     </div>
+  );
+}
+
+
+export  function DateSelector() {
+  const classes = useStyles();
+
+  return (
+    <form className={classes.container} noValidate>
+      <TextField
+        id="date"
+        label="Birthday"
+        type="date"
+        defaultValue="2017-05-24"
+        className={classes.textField}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+    </form>
   );
 }
