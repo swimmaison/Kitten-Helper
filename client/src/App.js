@@ -4,6 +4,7 @@ import './App.css';
 import Greet from './Components/Greet'
 import KittenList from './Components/KittenList';
 import PhotoGallery from './Components/PhotoGallery';
+import AddKitten from './Components/AddKitten'
 
 class App extends Component {
 render(){
@@ -14,11 +15,8 @@ render(){
        
         <p>
           <Greet></Greet>
-          <KittenList
-          name = "fluffy"
-          dob = "12"
-          
-          ></KittenList>
+          <KittenList></KittenList>
+          <AddKitten></AddKitten>
           <PhotoGallery></PhotoGallery>
         </p>
  
