@@ -50,7 +50,7 @@ export function PoopSelect() {
           displayEmpty
           className={classes.selectEmpty}
         >
-          <MenuItem value="">
+          <MenuItem value={"normal"}>
             <em>Normal</em>
           </MenuItem>
           <MenuItem value={'green'}>More green than normal</MenuItem>
