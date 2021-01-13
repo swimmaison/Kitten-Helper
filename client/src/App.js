@@ -1,29 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import Greet from './Components/Greet'
-import KittenList from './Components/KittenList';
-import PhotoGallery from './Components/PhotoGallery';
-import AddKitten from './Components/AddKitten'
 
-class App extends Component {
-render(){
+import Weight from './Pages/Weight'
+import Feeding from './Pages/Feeding'
+import { requirePropFactory } from '@material-ui/core';
+
+
+
+function App(){
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-       
-        <p>
-          <Greet></Greet>
-          <KittenList></KittenList>
-          <AddKitten></AddKitten>
-          <PhotoGallery></PhotoGallery>
-        </p>
- 
-      </header>
+
+       <Feeding />
+
     </div>
   );
 };
-}
+
 
 export default App;
