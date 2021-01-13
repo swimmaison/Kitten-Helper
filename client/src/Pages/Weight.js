@@ -15,9 +15,27 @@ export default function Weight() {
 
   return (
     <div className="root">
-      <Chart />
-<ModalButton />
-      
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper className="paper">
+              <Typography variant="h1">Kitten 1</Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Navbar />
+        </Grid>
+        <Grid item xs={12}>
+          <Chart />
+        </Grid>
+        <Grid item xs={12}>
+          <ModalButton>
+              <NewWeightForm />
+          </ModalButton>
+        </Grid>
+        <Grid item xs={12}>
+          <KittenTable />
+        </Grid>
+      </Grid>
     </div>
   );
 }
