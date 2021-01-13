@@ -17,14 +17,12 @@ const useStyles = makeStyles({
 
 export default function KittenTable(props){
     const classes = useStyles();
-    const header = Object.keys(props).map((item,i) => <TableCell key={i}>{item}</TableCell>);
-    let tabData;
-for (let i = 0; i < props.dates.length; i++) {
-    let entries
-    header.forEach((column) => {
-     entries.push(<TableCell key={i}>{props[column][i]}</TableCell>) 
- })
- tabData.push(<TableRow key={i}>{entries}</TableRow>)
+    const header = Object.keys(props.data[0]).map((item, i) => <TableCell key={"header"+i}>{item}</TableCell>);
+    let tabData=[];
+for (let i = 0; i < props.data.length; i++) {
+    let entries=Object.keys(props.data[0]).map((column) =>  <TableCell key={column+"cell"+i}>{props.data[i][column]}</TableCell>
+ )
+ tabData.push(<TableRow key={"row"+i}>{entries}</TableRow>)
 }
 
 return <TableContainer component={Paper}>

@@ -68,17 +68,16 @@ export  function DateSelector() {
   const classes = useStyles();
 
   return (
-    <form className={classes.container} noValidate>
+
       <TextField
         id="date"
-        label="Birthday"
+        label="Date"
         type="date"
-        defaultValue="2017-05-24"
+        defaultValue= {Date()}
         className={classes.textField}
         InputLabelProps={{
           shrink: true,
         }}
       />
-    </form>
   );
 }

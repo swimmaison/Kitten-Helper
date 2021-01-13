@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+  },  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
   },
 }));
 
@@ -22,9 +25,6 @@ export function NewKittenForm(){
   const classes = useStyles();
   const [state, setState] = React.useState({
     checkedA: true,
-    checkedB: true,
-    checkedF: true,
-    checkedG: true,
   });
 
   const handleChange = (event) => {
@@ -45,12 +45,12 @@ export function NewKittenForm(){
 }
 export function NewWeightForm(){
   const classes = useStyles();
-  return <form>
+  return  <form className={classes.container} noValidate>
     <DateSelector />
     <TextField
-          label="With normal TextField"
-          id="standard-start-adornment"
-          type="number"
+           label="Weight"
+           id="weight-entry-field"
+           type="number"
           InputProps={{
             endAdornment: <InputAdornment position="end">g</InputAdornment>,
           }}
@@ -59,11 +59,11 @@ export function NewWeightForm(){
 }
 export function NewFeedingForm(){
   const classes = useStyles();
-  return <form>
+  return <form className={classes.container} noValidate>
     <DateSelector />
     <TextField
-          label="With normal TextField"
-          id="standard-start-adornment"
+          label="Volume fed"
+          id="volume-entry-field"
           type="number"
           InputProps={{
             endAdornment: <InputAdornment position="end">ml</InputAdornment>,
