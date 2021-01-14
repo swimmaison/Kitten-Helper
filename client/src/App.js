@@ -42,9 +42,12 @@ function App(){
           <Route exact path="/feeding">
             <Feeding />
           </Route>
+          <Route exact path="/photo">
+            <PhotoGallery />
+          </Route>
     <Route exact path="/">
     <Greet></Greet>
-      <KittenList></KittenList>
+      <KittenList><AddKitten /></KittenList>
     </Route>
           </Switch>
 </Router>
