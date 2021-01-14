@@ -5,34 +5,39 @@ const Schema = mongoose.Schema;
 const kittenSchema = new Schema({
     name: {
         type: String,
-        required: true
+
     },
     breed: {
         type: String,
-        required: true
+
     },
     age: {
         type: Number,
-        required: true
+
     },
-    weight: {
-        type: Number,
-        required: true
+    weights: {
+        date: {
+            type: Number
+        },
+        weight: {
+            type: Number
+        }
     },
-    feeding: {
-        type: Number,
-        required: true
+    feedings: {
+        date: {
+            type: Number
+        },
+        amount: {
+            type: Number
+        },
+        quality: {
+            type: String
+        },
     },
-    quality: {
-        type: String
-    },
+
     image: {
         image: Buffer,
         type: String
-    },
-    date: {
-        type: Date,
-        default: Date.now
     }
 })
 
@@ -63,7 +68,7 @@ const Kittens = mongoose.model("Kittens", kittenSchema);
 //            fs.writeFile("./output.png", kitten.image, callback)
 //        }
 //     ], callback)
-    
+
 // ], err => {
 //     if (err) throw err;
 //     mongoose.disconnect();

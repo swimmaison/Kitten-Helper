@@ -7,7 +7,7 @@ export default {
     return axios.get("/api/kittens");
   },
   // Gets the kittens with the given id
-  getKittens: function(id) {
+  getKitten: function(id) {
     return axios.get("/api/kittens/" + id);
   },
   // Deletes the book with the given id
@@ -16,6 +16,9 @@ export default {
   },
   // Saves a book to the database
   saveKittens: function(kittenData) {
+    return axios.post("/api/kittens", kittenData);
+  },
+  updateKittens: function(kittenData) {
     return axios.post("/api/kittens", kittenData);
   }
 };
