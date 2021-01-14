@@ -1,7 +1,9 @@
 import React from 'react'
+import Button from '@material-ui/core/Button';
+
 
 const AddKitten = () => <div> 
-    <button>Add a kitten</button>
+    <Button>Add a kitten</Button>
 
 </div>
 
