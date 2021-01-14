@@ -24,6 +24,9 @@ const kittenSchema = new Schema({
         type: Number,
         required: true
     },
+    quality: {
+        type: String
+    },
     image: {
         image: Buffer,
         type: String
