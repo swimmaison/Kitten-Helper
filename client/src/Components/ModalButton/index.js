@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import SaveIcon from '@material-ui/icons/Save';
+import Button from '@material-ui/core/Button';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -27,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ModalButton({label, children}) {
+export default function ModalButton(props) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(props.state);
 
   const handleOpen = () => {
     setOpen(true);
@@ -41,11 +43,16 @@ export default function ModalButton({label, children}) {
     setOpen(false);
   };
 
+  const handleSubmit = (event) =>{
+    handleClose()
+    props.onClick(event)
+  }
+
 
   return (
     <div>
       <button type="button" onClick={handleOpen}>
-        {label}
+        {props.label}
       </button>
       <Modal
         open={open}
@@ -54,7 +61,16 @@ export default function ModalButton({label, children}) {
         aria-describedby="simple-modal-description"
       >
         <div style={modalStyle} className={classes.paper}>
-        {children}
+        {props.children}
+        <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        className="button"
+        startIcon={<SaveIcon />}
+        onClick={handleSubmit}
+        
+      >Save</Button>
         </div>
       </Modal>
     </div>
