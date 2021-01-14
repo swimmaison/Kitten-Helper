@@ -46,17 +46,7 @@ export default function Feeding() {
   return (
     <div className="root">
       <Grid container spacing={3}>
-        <Grid item xs={3}>
-        <img src={logo} className="App-logo" alt="logo" />
-        </Grid>
-        <Grid item xs={9}>
-          <Paper className="paper">
-              <Typography variant="h1">Kitten 1</Typography>
-          </Paper>
-        </Grid>
-        <Grid item xs={12}>
-          <Navbar page={0}/>
-        </Grid>
+       
         <Grid item xs={12}>
           <Chart data={testingFeeding} recMins={recMins} recMaxs={recMaxs}/>
         </Grid>

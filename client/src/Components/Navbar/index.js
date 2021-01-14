@@ -17,9 +17,6 @@ function LinkTab(props) {
   return (
     <Tab
       component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
       {...props}
     />
   );
@@ -34,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(props.page);
+  const [value, setValue] = React.useState();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
