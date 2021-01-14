@@ -51,7 +51,7 @@ export default function PhotoGallery() {
           </Paper>
 
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs>
           <Paper className={classes.paper}>
           <img src="https://bulma.io/images/placeholders/128x128.png"></img>
 
