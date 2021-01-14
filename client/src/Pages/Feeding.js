@@ -10,6 +10,7 @@ import { NewFeedingForm } from '../Components/Forms';
 import Navbar from '../Components/Navbar';
 import 'fontsource-roboto';
 import logo from '../logo.svg';
+import API from '../utils/API';
 
 
 const testingFeeding = [];
@@ -39,9 +40,12 @@ export default function Feeding() {
       const handleFormSubmit = event => {
         // When the form is submitted, prevent its default behavior, get recipes update the recipes state
         event.preventDefault();
-        let numAmount=parseInt(amount)
-        setFeedings(testingFeeding.push({date: date, amount: numAmount, poop: poop}))
-        console.log(testingFeeding)
+        API.saveKittens({
+          feedings: feedings.value
+        
+        })
+
+        
       };
   return (
     <div className="root">
