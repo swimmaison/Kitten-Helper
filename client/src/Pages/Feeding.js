@@ -13,17 +13,33 @@ import logo from '../logo.svg';
 import API from '../utils/API';
 
 
-const testingFeeding = [];
+
 const recMins = [50,60,70,80];
 const recMaxs = [80,90,100,110];
 
 
 
-export default function Feeding() {
-    const [feedings, setFeedings] = React.useState(testingFeeding);
+export default function Feeding() {      
+  const testingFeeding = [];
+  const [feedings, setFeedings] = React.useState(testingFeeding);
     const [date, setDate] = React.useState()
     const [poop, setPoop] = React.useState()
     const [amount, setAmount] = React.useState()
+
+  React.useEffect(() => {
+    loadKitten()
+  }, [])
+
+  // Loads all books and sets them to books
+  function loadKitten() {
+    API.getKittens()
+      .then(res => 
+        setFeedings(res.data[0].feedings)
+      )
+      .catch(err => console.log(err));
+      
+  };
+
 
     const handleDateChange = event => {
         const { value } = event.target;
@@ -40,12 +56,9 @@ export default function Feeding() {
       const handleFormSubmit = event => {
         // When the form is submitted, prevent its default behavior, get recipes update the recipes state
         event.preventDefault();
-        API.saveKittens({
-          feedings: feedings.value
-        
-        })
-
-        
+        let numAmount=parseInt(amount)
+        setFeedings(testingFeeding.push({date: date, amount: numAmount, poop: poop}))
+        console.log(testingFeeding)
       };
   return (
     <div className="root">

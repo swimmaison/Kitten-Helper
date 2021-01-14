@@ -16,12 +16,19 @@ mongoose.connect(
 
 const kittenSeed = [
     {
-        name: "mike meyers",
-        breed: "some breed",
-        age: 2,
-        weight: 3
+      name: "Kitten 1",
+    breed: "American Shorthair",
+    age: .6,
+    weights: {
+        date: Date(),
+        weight: 80
+    },
+    feedings: {
+        date: Date(),
+        amount: 80,
+        quality: "Normal",
     }
-];
+    }];
 
 db.Kittens
   .remove({})

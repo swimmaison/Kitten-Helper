@@ -53,7 +53,7 @@ export function NewKittenForm(){
 export function NewWeightForm(props){
   const classes = useStyles();
   return  <form className={classes.container} noValidate>
-    <DateSelector />
+    <DateSelector onChange={props.onDateChange}/>
     <TextField
            label="Weight"
            id="weight-entry-field"
@@ -61,17 +61,8 @@ export function NewWeightForm(props){
           InputProps={{
             endAdornment: <InputAdornment position="end">g</InputAdornment>,
           }}
+          onChange={props.onWeightChange}
         />
-        <Button
-        variant="contained"
-        color="primary"
-        size="small"
-        className={classes.button}
-        startIcon={<SaveIcon />}
-        onClick={props.handleSubmit}
-      >
-        Save
-      </Button>
   </form>
 }
 export function NewFeedingForm(props){

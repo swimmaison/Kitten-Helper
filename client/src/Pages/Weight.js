@@ -27,14 +27,14 @@ export default function Weight() {
 
   const handleWeightChange = event => {
       const { value } = event.target;
-      setWeight(value);
+      let numWeight = parseInt(value)
+      setWeight(numWeight);
   };
     const handleFormSubmit = event => {
       // When the form is submitted, prevent its default behavior, get recipes update the recipes state
       event.preventDefault();
-      let numWeight=parseInt(weight)
-      setWeights(testingWeight.push({date: date, weight: numWeight}))
-      console.log(weights)
+      setWeights(testingWeight.push({date: date, weight: weight}))
+      console.log(weight)
     };
   return (
      <div className="root">
