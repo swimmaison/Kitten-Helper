@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const async = require("async");
-const fs = require("fs");
+//const fs = require("fs");
 
 const kittenSchema = new Schema({
     name: {
@@ -20,9 +20,17 @@ const kittenSchema = new Schema({
         type: Number,
         required: true
     },
+    feeding: {
+        type: Number,
+        required: true
+    },
     image: {
         image: Buffer,
         type: String
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 })
 
