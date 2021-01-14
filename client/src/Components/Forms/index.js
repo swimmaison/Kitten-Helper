@@ -6,7 +6,8 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { PoopSelect, DateSelector }  from '../Inputs';
-
+import SaveIcon from '@material-ui/icons/Save';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -15,9 +16,15 @@ const useStyles = makeStyles((theme) => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
-  },  container: {
-    display: 'flex',
+  },  
+  container: {
     flexWrap: 'wrap',
+    maxWidth:500,
+    justifyContent: 'center'
+  },
+  button: {
+    margin: theme.spacing(1),
+    height:30,
   },
 }));
 
@@ -43,7 +50,7 @@ export function NewKittenForm(){
     </FormControl>
   </form>
 }
-export function NewWeightForm(){
+export function NewWeightForm(props){
   const classes = useStyles();
   return  <form className={classes.container} noValidate>
     <DateSelector />
@@ -55,12 +62,22 @@ export function NewWeightForm(){
             endAdornment: <InputAdornment position="end">g</InputAdornment>,
           }}
         />
+        <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        className={classes.button}
+        startIcon={<SaveIcon />}
+        onClick={props.handleSubmit}
+      >
+        Save
+      </Button>
   </form>
 }
-export function NewFeedingForm(){
+export function NewFeedingForm(props){
   const classes = useStyles();
   return <form className={classes.container} noValidate>
-    <DateSelector />
+    <DateSelector onChange={props.onDateChange}/>
     <TextField
           label="Volume fed"
           id="volume-entry-field"
@@ -68,8 +85,9 @@ export function NewFeedingForm(){
           InputProps={{
             endAdornment: <InputAdornment position="end">ml</InputAdornment>,
           }}
+          onChange={props.onAmountChange}
         />
-        <PoopSelect />
+        <PoopSelect onChange={props.onPoopChange}/>
   </form>
 }
 export function NotificationForm(){}

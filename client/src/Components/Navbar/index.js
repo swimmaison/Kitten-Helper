@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { Link } from "react-router-dom";
 
 
 
@@ -15,11 +16,9 @@ function a11yProps(index) {
 
 function LinkTab(props) {
   return (
+   
     <Tab
-      component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
+      component={Link}
       {...props}
     />
   );
@@ -34,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(props.page);
+  const [value, setValue] = React.useState();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -49,9 +48,9 @@ export default function Navbar(props) {
           onChange={handleChange}
           aria-label="nav tabs"
         >
-          <LinkTab label="Feeding" href="/feeding" {...a11yProps(0)} />
-          <LinkTab label="Weight" href="/weight" {...a11yProps(1)} />
-          <LinkTab label="Photos" href="/photo" {...a11yProps(2)} />
+          <LinkTab label="Feeding" to="/feeding" {...a11yProps(0)} />
+          <LinkTab label="Weight" to="/weight" {...a11yProps(1)} />
+          <LinkTab label="Photos" to="/photo" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
     </div>

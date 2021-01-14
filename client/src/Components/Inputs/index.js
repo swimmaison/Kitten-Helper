@@ -12,7 +12,6 @@ import TextField from '@material-ui/core/TextField';
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -28,12 +27,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function PoopSelect() {
+export function PoopSelect(props) {
   const classes = useStyles();
   const [poop, setPoop] = React.useState('');
+  
 
   const handleChange = (event) => {
     setPoop(event.target.value);
+    props.onChange(event)
   };
 
   return (
@@ -50,9 +51,7 @@ export function PoopSelect() {
           displayEmpty
           className={classes.selectEmpty}
         >
-          <MenuItem value={"normal"}>
-            <em>Normal</em>
-          </MenuItem>
+          <MenuItem value={"normal"}>Normal</MenuItem>
           <MenuItem value={'green'}>More green than normal</MenuItem>
           <MenuItem value={'liquid'}>More liquid than normal</MenuItem>
           <MenuItem value={'hard'}>Harder than normal</MenuItem>
@@ -64,8 +63,14 @@ export function PoopSelect() {
 }
 
 
-export  function DateSelector() {
+export  function DateSelector(props) {
   const classes = useStyles();
+  const [date, setDate] = React.useState(Date());
+
+  const handleChange = (event) => {
+    setDate(event.target.value);
+    props.onChange(event)
+  };
 
   return (
 
@@ -73,11 +78,12 @@ export  function DateSelector() {
         id="date"
         label="Date"
         type="date"
-        defaultValue= {Date()}
+        defaultValue= {date}
         className={classes.textField}
         InputLabelProps={{
           shrink: true,
         }}
+        onChange={handleChange}
       />
   );
 }
