@@ -52,6 +52,6 @@ function UploadPhoto(){
 			</div>
 		</div>
 	)
-}
+
 
 export default UploadPhoto
