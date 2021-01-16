@@ -27,14 +27,16 @@ export default function Feeding() {
     const [amount, setAmount] = React.useState()
 
   React.useEffect(() => {
-    loadKitten()
+    loadKittens()
   }, [])
 
   // Loads all books and sets them to books
-  function loadKitten() {
+  function loadKittens() {
     API.getKittens()
       .then(res => 
-        setFeedings(res.data[0].feedings)
+        {console.log(res)
+        setFeedings(res.data)
+        testingFeeding.push(feedings)}
       )
       .catch(err => console.log(err));
       
