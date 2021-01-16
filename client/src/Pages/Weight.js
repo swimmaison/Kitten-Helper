@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -7,9 +7,7 @@ import KittenTable from '../Components/KittenTable';
 import Chart from '../Components/Chart';
 import ModalButton from '../Components/ModalButton'
 import { NewWeightForm } from '../Components/Forms';
-import Navbar from '../Components/Navbar';
 import 'fontsource-roboto';
-import logo from '../logo.svg';
 
 const testingWeight = [{date : Date(2021,1,110), weight: 60},{date : Date(2021,1,11), weight: 70},{date : Date(2021,1,12), weight: 80},{date : Date(), weight: 90}];
 const recMins = [50,60,70,80];

@@ -7,9 +7,7 @@ import KittenTable from '../Components/KittenTable';
 import Chart from '../Components/Chart';
 import ModalButton from '../Components/ModalButton'
 import { NewFeedingForm } from '../Components/Forms';
-import Navbar from '../Components/Navbar';
 import 'fontsource-roboto';
-import logo from '../logo.svg';
 import API from '../utils/API';
 
 
