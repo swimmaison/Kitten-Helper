@@ -18,7 +18,7 @@ const kittenSeed = [
     {
       name: "Kitten 1",
     breed: "American Shorthair",
-    age: 6,
+    birthdate: Date(2020, 12, 12),
     weights: {
         date: Date(),
         weight: 80
