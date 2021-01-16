@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const kittenSchema = new Schema({
     name: {
         type: String,
-
     },
     breed: {
         type: String,
@@ -33,15 +32,14 @@ const kittenSchema = new Schema({
         quality: {
             type: String
         },
-    },
-
-    image: {
-        image: Buffer,
-        type: String
     }
+    // image: {
+    //     image: Buffer,
+    //     type: String
+    // }
 })
 
-const Kittens = mongoose.model("Kittens", kittenSchema);
+const Kitten = mongoose.model("Kitten", kittenSchema);
 
 // async.series([
 //     (callback) => 
@@ -74,4 +72,4 @@ const Kittens = mongoose.model("Kittens", kittenSchema);
 //     mongoose.disconnect();
 // })
 
-module.exports = Kittens;
+module.exports = Kitten;

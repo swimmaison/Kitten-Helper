@@ -18,7 +18,7 @@ const kittenSeed = [
     {
       name: "Kitten 1",
     breed: "American Shorthair",
-    age: .6,
+    age: 6,
     weights: {
         date: Date(),
         weight: 80
@@ -30,9 +30,9 @@ const kittenSeed = [
     }
     }];
 
-db.Kittens
+db.Kitten
   .remove({})
-  .then(() => db.Kittens.collection.insertMany(kittenSeed))
+  .then(() => db.Kitten.collection.insertMany(kittenSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);

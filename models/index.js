@@ -1,3 +1,3 @@
 module.exports = {
-    Kittens: require("./kitten")
+    Kitten: require("./kitten")
 };

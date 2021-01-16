@@ -11,7 +11,7 @@ class KittenList extends Component {
   renderItems() {
     if (this.state.listitems.length === 0) {
       return (
-        <div class="alert alert-warning" role="alert">
+        <div className="alert alert-warning" role="alert">
           Please add a kitten to get started!
         </div>
       );
