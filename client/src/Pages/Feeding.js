@@ -12,8 +12,6 @@ import API from '../utils/API';
 
 
 
-const recMins = [50,60,70,80];
-const recMaxs = [80,90,100,110];
 
 
 
@@ -65,7 +63,7 @@ export default function Feeding() {
       <Grid container spacing={3}>
        
         <Grid item xs={12}>
-          <Chart data={testingFeeding} recMins={recMins} recMaxs={recMaxs}/>
+          <Chart data={testingFeeding} />
         </Grid>
         <Grid item xs={12}>
           <ModalButton label="Enter New Feeding" state={false} onClick= {handleFormSubmit}>

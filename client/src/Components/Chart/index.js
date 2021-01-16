@@ -2,7 +2,7 @@ import React from 'react';
 import {Line} from 'react-chartjs-2';
 
 export default function Chart(props) {
-
+    
     const dates = props.data.map((obj) => obj.date);
     const points = props.data.map((obj) => obj[Object.keys(obj)[1]]);
     const data = {
@@ -11,15 +11,22 @@ export default function Chart(props) {
     };
     if (props.recMins === undefined) {
         data.datasets = [{
-            label: 'Weight',
+            label: 'Amount',
             fill: false,
-            data: points
+            data: points,
+            backgroundColor: 'rgba(0,255,255,0.4)',
+            borderColor: 'rgba(0,255,255,0.4)',
+            pointBorderColor: '#001eff',
+            pointBackgroundColor: '#001eff'
         }]
     } else {
         data.datasets = [{
             label: 'Weight',
             fill: false,
-            data: points
+            data: points,
+            borderColor: 'rgba(75,192,192,1)',
+            pointBorderColor: 'rgba(75,192,192,1)',
+            pointBackgroundColor: '#277a24'
         }, {
             label: 'Recommended minimum',
             fill: false,
@@ -27,7 +34,8 @@ export default function Chart(props) {
         }, {
             label: 'Recommended maximum',
             fill: '-1',
-            data: props.recMaxs
+            data: props.recMaxs,
+            backgroundColor: 'rgba(100,255,150,0.1)'
         }, ]
     }
     return <div> <Line data = {data} /></div> ;
