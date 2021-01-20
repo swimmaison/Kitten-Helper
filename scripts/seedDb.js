@@ -5,8 +5,7 @@ const db = require("../models");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/kittenhelper",
-  {
+  "mongodb://localhost/kittenhelper", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -14,21 +13,27 @@ mongoose.connect(
   }
 );
 
-const kittenSeed = [
-    {
-      name: "Kitten 1",
-    breed: "American Shorthair",
-    birthdate: Date(2020, 12, 12),
-    weights: {
-        date: Date(),
-        weight: 80
-    },
-    feedings: {
-        date: Date(),
-        amount: 80,
-        quality: "Normal",
-    }
-    }];
+const kittenSeed = [{
+  name: "Kitten 1",
+  breed: "American Shorthair",
+  birthdate: "2021-12-10",
+  weights: [{
+    date: "2021-01-18",
+    weight: 80
+  }, {
+    date: "2021-01-19",
+    weight: 100
+  }],
+  feedings: [{
+    date: "2021-01-18",
+    amount: 80,
+    quality: "Normal"
+  }, {
+    date: "2021-01-19",
+    amount: 100,
+    quality: "Normal"
+  }]
+}];
 
 db.Kitten
   .remove({})

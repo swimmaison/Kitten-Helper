@@ -16,9 +16,13 @@ import API from '../utils/API';
 
 
 export default function Feeding() {      
-  const testingFeeding = [];
-  const [feedings, setFeedings] = React.useState(testingFeeding);
-    const [date, setDate] = React.useState()
+  let [month, day, year]    = new Date().toLocaleDateString("en-US").split("/")
+  if (parseInt(month)<10) {
+    month = "0"+ month;
+  };
+  let today = year + "-" + month + "-" + day
+  const [feedings, setFeedings] = React.useState([]);
+    const [date, setDate] = React.useState(today)
     const [poop, setPoop] = React.useState()
     const [amount, setAmount] = React.useState()
 
@@ -26,13 +30,13 @@ export default function Feeding() {
     loadKittens()
   }, [])
 
-  // Loads all books and sets them to books
+  // Loads all kittens and sets them to books
   function loadKittens() {
     API.getKittens()
       .then(res => 
-        {console.log(res)
-        setFeedings(res.data)
-        testingFeeding.push(feedings)}
+        {console.log(res.data[0].feedings)
+        setFeedings(res.data[0].feedings)
+        }
       )
       .catch(err => console.log(err));
       
@@ -42,6 +46,7 @@ export default function Feeding() {
     const handleDateChange = event => {
         const { value } = event.target;
         setDate(value);
+        console.log(value);
       };
       const handlePoopChange = event => {
         const { value } = event.target;
@@ -55,15 +60,15 @@ export default function Feeding() {
         // When the form is submitted, prevent its default behavior, get recipes update the recipes state
         event.preventDefault();
         let numAmount=parseInt(amount)
-        setFeedings(testingFeeding.push({date: date, amount: numAmount, poop: poop}))
-        console.log(testingFeeding)
+        const newFeedings = [...feedings,{date: date, amount: numAmount, quality: poop}];
+        setFeedings(newFeedings)
       };
   return (
     <div className="root">
       <Grid container spacing={3}>
        
         <Grid item xs={12}>
-          <Chart data={testingFeeding} />
+          <Chart data={feedings}/>
         </Grid>
         <Grid item xs={12}>
           <ModalButton label="Enter New Feeding" state={false} onClick= {handleFormSubmit}>
@@ -72,7 +77,7 @@ export default function Feeding() {
           </ModalButton>
         </Grid>
         <Grid item xs={12}>
-          <KittenTable data={testingFeeding} />
+          <KittenTable data={feedings} />
         </Grid>
       </Grid>
     </div>

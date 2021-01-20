@@ -32,7 +32,7 @@ function App(){
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          <Navbar/>
+          <Navbar currPage="0"/>
         </Grid>
       
         <Switch>

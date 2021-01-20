@@ -2,7 +2,8 @@ import React from 'react';
 import {Line} from 'react-chartjs-2';
 
 export default function Chart(props) {
-    
+    console.log(props.data)
+    if (typeof props.data === 'object' && props.data !== null){
     const dates = props.data.map((obj) => obj.date);
     const points = props.data.map((obj) => obj[Object.keys(obj)[1]]);
     const data = {
@@ -38,5 +39,8 @@ export default function Chart(props) {
             backgroundColor: 'rgba(100,255,150,0.1)'
         }, ]
     }
-    return <div> <Line data = {data} /></div> ;
+    return <div> <Line data = {data} /></div> ;}
+    else{
+        return <div> <Line data={[]}/></div> ;
+    }
 }
