@@ -8,16 +8,52 @@ import Chart from '../Components/Chart';
 import ModalButton from '../Components/ModalButton'
 import { NewWeightForm } from '../Components/Forms';
 import 'fontsource-roboto';
+import API from '../utils/API';
 
-const testingWeight = [{date : Date(2021,1,110), weight: 60},{date : Date(2021,1,11), weight: 70},{date : Date(2021,1,12), weight: 80},{date : Date(), weight: 90}];
 const recMins = [50,60,70,80];
 const recMaxs = [80,90,100,110];
 
 export default function Weight() {
-  const [weights, setWeights] = React.useState(testingWeight);
-  const [date, setDate] = React.useState()
-  const [weight, setWeight] = React.useState()
+  let [month, day, year]    = new Date().toLocaleDateString("en-US").split("/")
+  if (parseInt(month)<10) {
+    month = "0"+ month;
+  };
+  let today = year + "-" + month + "-" + day
+    const [id, setId] = React.useState()
+    const [weights, setWeights] = React.useState([]);
+    const [date, setDate] = React.useState(today)
+    const [weight, setWeight] = React.useState()
 
+  React.useEffect(() => {
+    loadKittens()
+  }, [])
+
+  // Loads all kittens 
+  function loadKittens() {
+    API.getKittens()
+      .then(res => 
+        {console.log(res.data)
+        setWeights(res.data[0].weights)
+        setId(res.data[0]._id)
+        }
+      )
+      .catch(err => console.log(err));
+      
+  };
+
+      const handleFormSubmit = event => {
+        // When the form is submitted, prevent its default behavior, get recipes update the recipes state
+        event.preventDefault();
+        let numWeight=parseInt(weight)
+        const newWeights = [...weights,{date: date, weight: numWeight}];
+        setWeights(newWeights)
+        API.updateKitten(
+          {_id: id,
+          weights: newWeights}
+        ).then(res => 
+          {console.log(res.data)})
+          .catch(err => console.log(err));
+      };
   const handleDateChange = event => {
       const { value } = event.target;
       setDate(value);
@@ -28,26 +64,20 @@ export default function Weight() {
       let numWeight = parseInt(value)
       setWeight(numWeight);
   };
-    const handleFormSubmit = event => {
-      // When the form is submitted, prevent its default behavior, get recipes update the recipes state
-      event.preventDefault();
-      setWeights(testingWeight.push({date: date, weight: weight}))
-      console.log(weight)
-    };
   return (
      <div className="root">
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Chart data={testingWeight} recMins={recMins} recMaxs={recMaxs}/>
+          <Chart data={weights} recMins={recMins} recMaxs={recMaxs}/>
         </Grid>
         <Grid item xs={12}>
-          <ModalButton label="Enter New Feeding" state={false} onClick= {handleFormSubmit}>
+          <ModalButton label="Enter New Weight" state={false} onClick= {handleFormSubmit}>
               <NewWeightForm onDateChange={handleDateChange} onWeightChange={handleWeightChange}/>
               
           </ModalButton>
         </Grid>
         <Grid item xs={12}>
-          <KittenTable data={testingWeight} />
+          <KittenTable data={weights} />
         </Grid>
       </Grid>
     </div>

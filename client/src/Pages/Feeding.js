@@ -25,17 +25,19 @@ export default function Feeding() {
     const [date, setDate] = React.useState(today)
     const [poop, setPoop] = React.useState()
     const [amount, setAmount] = React.useState()
+    const [id, setId] = React.useState()
 
   React.useEffect(() => {
     loadKittens()
   }, [])
 
-  // Loads all kittens and sets them to books
+  // Loads all kittens 
   function loadKittens() {
     API.getKittens()
       .then(res => 
-        {console.log(res.data[0].feedings)
+        {console.log(res.data)
         setFeedings(res.data[0].feedings)
+        setId(res.data[0]._id)
         }
       )
       .catch(err => console.log(err));
@@ -43,10 +45,10 @@ export default function Feeding() {
   };
 
 
+
     const handleDateChange = event => {
         const { value } = event.target;
         setDate(value);
-        console.log(value);
       };
       const handlePoopChange = event => {
         const { value } = event.target;
@@ -62,6 +64,12 @@ export default function Feeding() {
         let numAmount=parseInt(amount)
         const newFeedings = [...feedings,{date: date, amount: numAmount, quality: poop}];
         setFeedings(newFeedings)
+        API.updateKitten(
+          {_id: id,
+          feedings: newFeedings}
+        ).then(res => 
+          {console.log(res.data)})
+          .catch(err => console.log(err));
       };
   return (
     <div className="root">
