@@ -51,10 +51,10 @@ export function PoopSelect(props) {
           displayEmpty
           className={classes.selectEmpty}
         >
-          <MenuItem value={"normal"}>Normal</MenuItem>
-          <MenuItem value={'green'}>More green than normal</MenuItem>
-          <MenuItem value={'liquid'}>More liquid than normal</MenuItem>
-          <MenuItem value={'hard'}>Harder than normal</MenuItem>
+          <MenuItem value={"Normal"}>Normal</MenuItem>
+          <MenuItem value={'Green'}>More green than normal</MenuItem>
+          <MenuItem value={'Liquid'}>More liquid than normal</MenuItem>
+          <MenuItem value={'Hard'}>Harder than normal</MenuItem>
         </Select>
         <FormHelperText>Mark any changes in the kitten's bowel movement</FormHelperText>
       </FormControl>
@@ -65,7 +65,13 @@ export function PoopSelect(props) {
 
 export  function DateSelector(props) {
   const classes = useStyles();
-  const [date, setDate] = React.useState(Date());
+  let [month, day, year]    = new Date().toLocaleDateString("en-US").split("/")
+  if (parseInt(month)<10) {
+    month = "0"+ month;
+  };
+  let today = year + "-" + month + "-" + day
+
+  const [date, setDate] = React.useState(today);
 
   const handleChange = (event) => {
     setDate(event.target.value);

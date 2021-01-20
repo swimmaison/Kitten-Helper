@@ -18,7 +18,8 @@ export default {
   saveKittens: function(kittenData) {
     return axios.post("/api/kittens", kittenData);
   },
-  updateKittens: function(kittenData) {
-    return axios.post("/api/kittens", kittenData);
+  updateKitten: function(kittenData) {
+    console.log(kittenData)
+    return axios.put("/api/kittens/"+ kittenData._id, kittenData);
   }
 };

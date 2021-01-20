@@ -6,8 +6,6 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { PoopSelect, DateSelector }  from '../Inputs';
-import SaveIcon from '@material-ui/icons/Save';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {

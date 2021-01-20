@@ -10,7 +10,7 @@ const kittenSchema = new Schema({
         type: String,
 
     },
-    age: {
+    birthdate: {
         type: Number,
 
     },

@@ -33,11 +33,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState(parseInt(props.currPage));
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
 
   return (
     <div className={classes.root}>
