@@ -56,7 +56,7 @@ function App(){
           <Route exact path="/signup">
           <Signup />
           </Route>
-    <Route exact path="/">
+    <Route path="/">
     <Greet></Greet>
       <KittenList><AddKitten /></KittenList>
     </Route>

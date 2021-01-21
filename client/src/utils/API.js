@@ -4,11 +4,19 @@ import axios from "axios";
 export default {
   // Gets all kittens
   getKittens: function() {
-    return axios.get("/api/kittens");
+    return axios.get("/api/kittens",{
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    });
   },
   // Gets the kittens with the given id
   getKitten: function(id) {
-    return axios.get("/api/kittens/" + id);
+    return axios.get("/api/kittens/" + id, {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    } );
   },
   // Deletes the book with the given id
   deleteKittens: function(id) {

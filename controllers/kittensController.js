@@ -2,12 +2,20 @@ const db = require("../models");
 
 module.exports = {
     findAll: function(req, res) {
+        if (!req.user) {
+            console.log("user is not authorized!", req.user);
+            return res.json({ success: false });
+          }
         db.Kitten
         .find(req.query)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     findById: function (req, res) {
+        if (!req.user) {
+            console.log("user is not authorized!", req.user);
+            return res.json({ success: false });
+          }
         db.Kitten
         .findById(req.params.id)
         .then(dbModel => res.json(dbModel))
