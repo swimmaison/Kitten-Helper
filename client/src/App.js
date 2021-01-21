@@ -1,31 +1,28 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Switch, useParams, useRouteMatch} from "react-router-dom";
+import React from 'react'
+import './App.css'
+import { BrowserRouter as Router, Route, Switch, useParams, useRouteMatch } from 'react-router-dom'
 import Weight from './Pages/Weight'
 import Feeding from './Pages/Feeding'
-import { requirePropFactory } from '@material-ui/core';
 
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Navbar from './Components/Navbar';
-import 'fontsource-roboto';
-import logo from './logo.svg';
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Navbar from './Components/Navbar'
+import 'fontsource-roboto'
+import logo from './logo.svg'
 
-import PhotoGallery from './Pages/PhotoGallery';
-import AddKitten from './Components/AddKitten';
+import PhotoGallery from './Pages/PhotoGallery'
+import AddKitten from './Components/AddKitten'
 import Greet from './Components/Greet.js'
 import KittenList from './Components/KittenList'
 import NewKittenForm from './Components/NewKittenForm'
 import Title from './Components/Title'
 import ModalButton from './Components/ModalButton'
 
-
-function App(){
-  
+function App () {
   return (
     <div className="App">
-      <Router>
+       <Router>
 
       <Switch>
     <Route exact path="/">
@@ -40,17 +37,15 @@ function App(){
     </Route>
           </Switch>
 </Router>
-     
 
     </div>
-  );
+  )
 };
 
-function KittenPage(){
+function KittenPage () {
+  const { path } = useRouteMatch()
 
-  let { path } = useRouteMatch();
-
-  let {kittenId} = useParams();
+  const { kittenId } = useParams()
 
   return <Router>
        <Grid item xs={3}>
@@ -61,9 +56,6 @@ function KittenPage(){
               <Typography variant="h1">{kittenId}</Typography>
           </Paper>
         </Grid>
-
-      
-
 
         <Switch>
 <Route exact path={`${path}/weight`}>
@@ -88,5 +80,4 @@ function KittenPage(){
 </Router>
 }
 
-
-export default App;
+export default App
