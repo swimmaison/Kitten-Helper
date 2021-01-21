@@ -79,7 +79,6 @@ export default function ModalButton (props) {
         className="button"
         startIcon={<SaveIcon />}
         onClick={handleSubmit}
-
       >Save</Button>
               </div>
           </Modal>

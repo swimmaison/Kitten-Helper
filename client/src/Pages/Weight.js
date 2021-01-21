@@ -71,7 +71,6 @@ export default function Weight (props) {
               <Grid item xs={12}>
                   <ModalButton label="Enter New Weight" state={false} onClick= {handleFormSubmit}>
                       <NewWeightForm onDateChange={handleDateChange} onWeightChange={handleWeightChange}/>
-
                   </ModalButton>
               </Grid>
               <Grid item xs={12}>

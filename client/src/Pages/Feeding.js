@@ -65,14 +65,12 @@ export default function Feeding (props) {
   return (
       <div className="root">
           <Grid container spacing={3}>
-
               <Grid item xs={12}>
                   <Chart data={feedings}/>
               </Grid>
               <Grid item xs={12}>
                   <ModalButton label="Enter New Feeding" state={false} onClick= {handleFormSubmit}>
                       <NewFeedingForm onPoopChange={handlePoopChange} onDateChange={handleDateChange} onAmountChange={handleAmountChange}/>
-
                   </ModalButton>
               </Grid>
               <Grid item xs={12}>

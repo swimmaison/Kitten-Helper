@@ -42,12 +42,12 @@ export function PoopSelect (props) {
                   Poop Quality
               </InputLabel>
               <Select
-          labelId="poop-quality-label"
-          id="poop-quality-selector"
-          value={poop}
-          onChange={handleChange}
-          displayEmpty
-          className={classes.selectEmpty}
+                labelId="poop-quality-label"
+                id="poop-quality-selector"
+                value={poop}
+                onChange={handleChange}
+                displayEmpty
+                className={classes.selectEmpty}
         >
                   <MenuItem value={'Normal'}>Normal</MenuItem>
                   <MenuItem value={'Green'}>More green than normal</MenuItem>
