@@ -1,48 +1,48 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-//const fs = require("fs");
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+// const fs = require("fs");
 
 const kittenSchema = new Schema({
-    name: {
-        type: String,
-    },
-    breed: {
-        type: String,
+  name: {
+    type: String
+  },
+  breed: {
+    type: String
 
-    },
-    birthdate: {
-        type: Number,
+  },
+  birthdate: {
+    type: Number
 
+  },
+  weights: {
+    date: {
+      type: Number
     },
-    weights: {
-        date: {
-            type: Number
-        },
-        weight: {
-            type: Number
-        }
-    },
-    feedings: {
-        date: {
-            type: Number
-        },
-        amount: {
-            type: Number
-        },
-        quality: {
-            type: String
-        },
+    weight: {
+      type: Number
     }
-    // image: {
-    //     image: Buffer,
-    //     type: String
-    // }
+  },
+  feedings: {
+    date: {
+      type: Number
+    },
+    amount: {
+      type: Number
+    },
+    quality: {
+      type: String
+    }
+  }
+  // image: {
+  //     image: Buffer,
+  //     type: String
+  // }
 })
 
-const Kitten = mongoose.model("Kitten", kittenSchema);
+const Kitten = mongoose.model('Kitten', kittenSchema)
 
 // async.series([
-//     (callback) => 
+//     (callback) =>
 //     async.each(mongoose.models, (model, callback) =>
 //     model.remove({}, callback), callback),
 
@@ -72,4 +72,4 @@ const Kitten = mongoose.model("Kitten", kittenSchema);
 //     mongoose.disconnect();
 // })
 
-module.exports = Kitten;
+module.exports = Kitten

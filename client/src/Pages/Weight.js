@@ -13,13 +13,13 @@ import API from '../utils/API';
 const recMins = [50,60,70,80];
 const recMaxs = [80,90,100,110];
 
-export default function Weight() {
+export default function Weight(props) {
   let [month, day, year]    = new Date().toLocaleDateString("en-US").split("/")
   if (parseInt(month)<10) {
     month = "0"+ month;
   };
   let today = year + "-" + month + "-" + day
-    const [id, setId] = React.useState()
+    const [id, setId] = React.useState(props.kittenId)
     const [weights, setWeights] = React.useState([]);
     const [date, setDate] = React.useState(today)
     const [weight, setWeight] = React.useState()
@@ -30,11 +30,11 @@ export default function Weight() {
 
   // Loads all kittens 
   function loadKittens() {
-    API.getKittens()
+    API.getKitten(props.kittenId)
       .then(res => 
         {console.log(res.data)
-        setWeights(res.data[0].weights)
-        setId(res.data[0]._id)
+        setWeights(res.data.weights)
+        setId(res.data._id)
         }
       )
       .catch(err => console.log(err));

@@ -15,7 +15,7 @@ import API from '../utils/API';
 
 
 
-export default function Feeding() {      
+export default function Feeding(props) {      
   let [month, day, year]    = new Date().toLocaleDateString("en-US").split("/")
   if (parseInt(month)<10) {
     month = "0"+ month;
@@ -33,11 +33,11 @@ export default function Feeding() {
 
   // Loads all kittens 
   function loadKittens() {
-    API.getKittens()
+    API.getKitten(props.kittenId)
       .then(res => 
         {console.log(res.data)
-        setFeedings(res.data[0].feedings)
-        setId(res.data[0]._id)
+        setFeedings(res.data.feedings)
+        setId(res.data._id)
         }
       )
       .catch(err => console.log(err));

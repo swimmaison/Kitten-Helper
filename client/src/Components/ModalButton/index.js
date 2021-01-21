@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
+import API from '../../utils/API';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -34,9 +35,20 @@ export default function ModalButton(props) {
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(props.state);
+  function loadKittens() {
+    API.getKittens()
+      .then(res => 
+        {console.log(res.data)
+
+        }
+      )
+      .catch(err => console.log(err));
+      
+  };
 
   const handleOpen = () => {
     setOpen(true);
+    loadKittens()
   };
 
   const handleClose = () => {

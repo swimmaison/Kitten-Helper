@@ -81,7 +81,7 @@ const Form = () => {
             name="Birth Date"
             label=""
             type="date"
-            value={formValues.kittenAge}
+            defaultValue={formValues.kittenAge}
             onChange={handleInputChange}
           />
         </Grid>

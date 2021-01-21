@@ -49,9 +49,9 @@ export default function Navbar(props) {
           onChange={handleChange}
           aria-label="nav tabs"
         >
-          <LinkTab label="Feeding" to="/feeding" {...a11yProps(0)} />
-          <LinkTab label="Weight" to="/weight" {...a11yProps(1)} />
-          <LinkTab label="Photos" to="/photo" {...a11yProps(2)} />
+          <LinkTab label="Feeding" to={"/"+props.id + "/feeding"} {...a11yProps(0)} />
+          <LinkTab label="Weight" to={"/"+props.id + "/weight"} {...a11yProps(1)} />
+          <LinkTab label="Photos" to={"/"+props.id + "/photo"} {...a11yProps(2)} />
         </Tabs>
       </AppBar>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useParams, useRouteMatch} from "react-router-dom";
 import Weight from './Pages/Weight'
 import Feeding from './Pages/Feeding'
 import { requirePropFactory } from '@material-ui/core';
@@ -17,6 +17,8 @@ import AddKitten from './Components/AddKitten';
 import Greet from './Components/Greet.js'
 import KittenList from './Components/KittenList'
 import NewKittenForm from './Components/NewKittenForm'
+import Title from './Components/Title'
+import ModalButton from './Components/ModalButton'
 
 
 function App(){
@@ -24,43 +26,67 @@ function App(){
   return (
     <div className="App">
       <Router>
-       <Grid item xs={3}>
-        <img src={logo} className="App-logo" alt="logo" />
-        </Grid>
-        <Grid item xs={9}>
-          <Paper className="paper">
-              <Typography variant="h1">Kitten 1</Typography>
-          </Paper>
-        </Grid>
-        <Grid item xs={12}>
-          <Navbar currPage="0"/>
-        </Grid>
-      
 
-
-        <Switch>
-<Route exact path="/weight">
-            <Weight />
-          </Route>
-          <Route exact path="/feeding">
-            <Feeding />
-          </Route>
-          <Route exact path="/photo">
-            <PhotoGallery />
-          </Route>
+      <Switch>
     <Route exact path="/">
     <Greet></Greet>
       <KittenList><AddKitten /></KittenList>
+      <ModalButton label="Enter New Kitten" state={false}>
+
+<NewKittenForm /></ModalButton>
+    </Route>
+    <Route path="/:kittenId">
+      <KittenPage />
     </Route>
           </Switch>
 </Router>
      
 
-
-<NewKittenForm></NewKittenForm>
     </div>
   );
 };
+
+function KittenPage(){
+
+  let { path } = useRouteMatch();
+
+  let {kittenId} = useParams();
+
+  return <Router>
+       <Grid item xs={3}>
+        <img src={logo} className="App-logo" alt="logo" />
+        </Grid>
+        <Grid item xs={9}>
+          <Paper className="paper">
+              <Typography variant="h1">{kittenId}</Typography>
+          </Paper>
+        </Grid>
+
+      
+
+
+        <Switch>
+<Route exact path={`${path}/weight`}>
+<Grid item xs={12}>
+          <Navbar id = {kittenId} currPage="1"/>
+        </Grid>
+            <Weight kittenId = {kittenId}/>
+          </Route>
+          <Route path={`${path}/feeding`}>
+          <Grid item xs={12}>
+          <Navbar id = {kittenId} currPage="0"/>
+        </Grid>
+            <Feeding kittenId = {kittenId}/>
+          </Route>
+          <Route path={[path, `${path}/photo`]}>
+          <Grid item xs={12}>
+          <Navbar id = {kittenId} currPage="2"/>
+        </Grid>
+            <PhotoGallery kittenId = {kittenId}/>
+          </Route>
+          </Switch>
+</Router>
+}
 
 
 export default App;
