@@ -63,22 +63,22 @@ export default function Feeding (props) {
       .catch(err => console.log(err))
   }
   return (
-    <div className="root">
-      <Grid container spacing={3}>
+      <div className="root">
+          <Grid container spacing={3}>
 
-        <Grid item xs={12}>
-          <Chart data={feedings}/>
-        </Grid>
-        <Grid item xs={12}>
-          <ModalButton label="Enter New Feeding" state={false} onClick= {handleFormSubmit}>
-              <NewFeedingForm onPoopChange={handlePoopChange} onDateChange={handleDateChange} onAmountChange={handleAmountChange}/>
+              <Grid item xs={12}>
+                  <Chart data={feedings}/>
+              </Grid>
+              <Grid item xs={12}>
+                  <ModalButton label="Enter New Feeding" state={false} onClick= {handleFormSubmit}>
+                      <NewFeedingForm onPoopChange={handlePoopChange} onDateChange={handleDateChange} onAmountChange={handleAmountChange}/>
 
-          </ModalButton>
-        </Grid>
-        <Grid item xs={12}>
-          <KittenTable data={feedings} />
-        </Grid>
-      </Grid>
-    </div>
+                  </ModalButton>
+              </Grid>
+              <Grid item xs={12}>
+                  <KittenTable data={feedings} />
+              </Grid>
+          </Grid>
+      </div>
   )
 }

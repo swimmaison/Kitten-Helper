@@ -30,15 +30,15 @@ export default function KittenTable (props) {
   }
 
   return <TableContainer component={Paper}>
-    <Table className={classes.table} aria-label="simple table">
-    <TableHead>
-        <TableRow>
-            {header}
-        </TableRow>
-    </TableHead>
-    <TableBody>
-        {tabData}
-    </TableBody>
-</Table>
-</TableContainer>
+      <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+              <TableRow>
+                  {header}
+              </TableRow>
+          </TableHead>
+          <TableBody>
+              {tabData}
+          </TableBody>
+      </Table>
+  </TableContainer>
 }

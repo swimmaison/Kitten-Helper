@@ -38,22 +38,22 @@ export function NewKittenForm () {
   }
 
   return <form>
-    <FormControl className={classes.formControl}>
-      <TextField id="standard-required" label="Required" defaultValue="Hello World" />
-      <TextField id="standard-required" label="Required" defaultValue="Hello World" />
-      <DateSelector />
-      <FormControlLabel
+      <FormControl className={classes.formControl}>
+          <TextField id="standard-required" label="Required" defaultValue="Hello World" />
+          <TextField id="standard-required" label="Required" defaultValue="Hello World" />
+          <DateSelector />
+          <FormControlLabel
         control={<Checkbox checked={state.checkedA} onChange={handleChange} name="checkedA" />}
         label="Secondary"
       />
-    </FormControl>
+      </FormControl>
   </form>
 }
 export function NewWeightForm (props) {
   const classes = useStyles()
   return <form className={classes.container} noValidate>
-    <DateSelector onChange={props.onDateChange}/>
-    <TextField
+      <DateSelector onChange={props.onDateChange}/>
+      <TextField
            label="Weight"
            id="weight-entry-field"
            type="number"
@@ -67,8 +67,8 @@ export function NewWeightForm (props) {
 export function NewFeedingForm (props) {
   const classes = useStyles()
   return <form className={classes.container} noValidate>
-    <DateSelector onChange={props.onDateChange}/>
-    <TextField
+      <DateSelector onChange={props.onDateChange}/>
+      <TextField
           label="Volume fed"
           id="volume-entry-field"
           type="number"
@@ -77,7 +77,7 @@ export function NewFeedingForm (props) {
           }}
           onChange={props.onAmountChange}
         />
-        <PoopSelect onChange={props.onPoopChange}/>
+      <PoopSelect onChange={props.onPoopChange}/>
   </form>
 }
 export function NotificationForm () {}

@@ -63,21 +63,21 @@ export default function Weight (props) {
     setWeight(numWeight)
   }
   return (
-     <div className="root">
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Chart data={weights} recMins={recMins} recMaxs={recMaxs}/>
-        </Grid>
-        <Grid item xs={12}>
-          <ModalButton label="Enter New Weight" state={false} onClick= {handleFormSubmit}>
-              <NewWeightForm onDateChange={handleDateChange} onWeightChange={handleWeightChange}/>
+      <div className="root">
+          <Grid container spacing={3}>
+              <Grid item xs={12}>
+                  <Chart data={weights} recMins={recMins} recMaxs={recMaxs}/>
+              </Grid>
+              <Grid item xs={12}>
+                  <ModalButton label="Enter New Weight" state={false} onClick= {handleFormSubmit}>
+                      <NewWeightForm onDateChange={handleDateChange} onWeightChange={handleWeightChange}/>
 
-          </ModalButton>
-        </Grid>
-        <Grid item xs={12}>
-          <KittenTable data={weights} />
-        </Grid>
-      </Grid>
-    </div>
+                  </ModalButton>
+              </Grid>
+              <Grid item xs={12}>
+                  <KittenTable data={weights} />
+              </Grid>
+          </Grid>
+      </div>
   )
 }

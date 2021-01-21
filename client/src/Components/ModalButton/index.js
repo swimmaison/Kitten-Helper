@@ -60,19 +60,19 @@ export default function ModalButton (props) {
   }
 
   return (
-    <div>
-      <button type="button" onClick={handleOpen}>
-        {props.label}
-      </button>
-      <Modal
+      <div>
+          <button type="button" onClick={handleOpen}>
+              {props.label}
+          </button>
+          <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div style={modalStyle} className={classes.paper}>
-        {props.children}
-        <Button
+              <div style={modalStyle} className={classes.paper}>
+                  {props.children}
+                  <Button
         variant="contained"
         color="primary"
         size="small"
@@ -81,8 +81,8 @@ export default function ModalButton (props) {
         onClick={handleSubmit}
 
       >Save</Button>
-        </div>
-      </Modal>
-    </div>
+              </div>
+          </Modal>
+      </div>
   )
 }

@@ -36,12 +36,12 @@ export function PoopSelect (props) {
   }
 
   return (
-    <div>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="poop-quality-label">
-          Poop Quality
-        </InputLabel>
-        <Select
+      <div>
+          <FormControl className={classes.formControl}>
+              <InputLabel id="poop-quality-label">
+                  Poop Quality
+              </InputLabel>
+              <Select
           labelId="poop-quality-label"
           id="poop-quality-selector"
           value={poop}
@@ -49,14 +49,14 @@ export function PoopSelect (props) {
           displayEmpty
           className={classes.selectEmpty}
         >
-          <MenuItem value={'Normal'}>Normal</MenuItem>
-          <MenuItem value={'Green'}>More green than normal</MenuItem>
-          <MenuItem value={'Liquid'}>More liquid than normal</MenuItem>
-          <MenuItem value={'Hard'}>Harder than normal</MenuItem>
-        </Select>
-        <FormHelperText>Mark any changes in the kitten&apos;s bowel movement</FormHelperText>
-      </FormControl>
-    </div>
+                  <MenuItem value={'Normal'}>Normal</MenuItem>
+                  <MenuItem value={'Green'}>More green than normal</MenuItem>
+                  <MenuItem value={'Liquid'}>More liquid than normal</MenuItem>
+                  <MenuItem value={'Hard'}>Harder than normal</MenuItem>
+              </Select>
+              <FormHelperText>Mark any changes in the kitten&apos;s bowel movement</FormHelperText>
+          </FormControl>
+      </div>
   )
 }
 

@@ -34,10 +34,10 @@ const Form = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Grid container alignItems="center" justify="center" direction="column">
-        <Grid item>
-          <TextField
+      <form onSubmit={handleSubmit}>
+          <Grid container alignItems="center" justify="center" direction="column">
+              <Grid item>
+                  <TextField
             id="name-input"
             name="name"
             label="Name"
@@ -45,35 +45,35 @@ const Form = () => {
             value={formValues.name}
             onChange={handleInputChange}
           />
-        </Grid>
+              </Grid>
 
-        <Grid item>
-          <FormControl>
-            <FormLabel>Gender</FormLabel>
-            <RadioGroup
+              <Grid item>
+                  <FormControl>
+                      <FormLabel>Gender</FormLabel>
+                      <RadioGroup
               name="gender"
               value={formValues.gender}
               onChange={handleInputChange}
               row
             >
-              <FormControlLabel
+                          <FormControlLabel
                 key="male"
                 value="male"
                 control={<Radio size="small" />}
                 label="Male"
               />
-              <FormControlLabel
+                          <FormControlLabel
                 key="female"
                 value="female"
                 control={<Radio size="small" />}
                 label="Female"
               />
-            </RadioGroup>
-          </FormControl>
-        </Grid>
+                      </RadioGroup>
+                  </FormControl>
+              </Grid>
 
-        <Grid item>
-          <TextField
+              <Grid item>
+                  <TextField
             id="kittenAge"
             name="Birth Date"
             label=""
@@ -81,10 +81,10 @@ const Form = () => {
             defaultValue={formValues.kittenAge}
             onChange={handleInputChange}
           />
-        </Grid>
+              </Grid>
 
-        <Grid item>
-          <TextField
+              <Grid item>
+                  <TextField
             id="kittenWeight"
             name="weight"
             label="weight in Ounces"
@@ -92,12 +92,12 @@ const Form = () => {
             value={formValues.kittenWeight}
             onChange={handleInputChange}
           />
-        </Grid>
-        <Button variant="contained" color="primary" type="submit">
-          Submit
-        </Button>
-      </Grid>
-    </form>
+              </Grid>
+              <Button variant="contained" color="primary" type="submit">
+                  Submit
+              </Button>
+          </Grid>
+      </form>
   )
 }
 

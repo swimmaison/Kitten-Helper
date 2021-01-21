@@ -16,7 +16,7 @@ function a11yProps (index) {
 function LinkTab (props) {
   return (
 
-    <Tab
+      <Tab
       component={Link}
       {...props}
     />
@@ -39,19 +39,19 @@ export default function Navbar (props) {
   }
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Tabs
+      <div className={classes.root}>
+          <AppBar position="static">
+              <Tabs
           variant="fullWidth"
           value={value}
           onChange={handleChange}
           aria-label="nav tabs"
         >
-          <LinkTab label="Feeding" to={'/' + props.id + '/feeding'} {...a11yProps(0)} />
-          <LinkTab label="Weight" to={'/' + props.id + '/weight'} {...a11yProps(1)} />
-          <LinkTab label="Photos" to={'/' + props.id + '/photo'} {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
-    </div>
+                  <LinkTab label="Feeding" to={'/' + props.id + '/feeding'} {...a11yProps(0)} />
+                  <LinkTab label="Weight" to={'/' + props.id + '/weight'} {...a11yProps(1)} />
+                  <LinkTab label="Photos" to={'/' + props.id + '/photo'} {...a11yProps(2)} />
+              </Tabs>
+          </AppBar>
+      </div>
   )
 }
