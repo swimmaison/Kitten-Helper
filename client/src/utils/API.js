@@ -21,5 +21,11 @@ export default {
   updateKitten: function(kittenData) {
     console.log(kittenData)
     return axios.put("/api/kittens/"+ kittenData._id, kittenData);
+   },
+    updateKittens: function(kittenData) {
+    return axios.post("/api/kittens", kittenData);
+  },
+  userLogin: function(userData) {
+    return axios.post("/api/login", userData);
   }
 };
