@@ -50,14 +50,27 @@ function App(){
           </Route>
     <Route exact path="/">
     <Greet></Greet>
-      <KittenList><AddKitten /></KittenList>
+    
+    <Grid item xs={12}>
+          <NewKittenForm></NewKittenForm>
+
+        </Grid>
     </Route>
           </Switch>
+          
+
+          <Route exact path="/home">
+    <Greet></Greet>
+    <KittenList></KittenList>
+
+    </Route>
+
+
+
 </Router>
      
 
 
-<NewKittenForm></NewKittenForm>
     </div>
   );
 };
