@@ -59,6 +59,7 @@ class Login extends Component {
                 <Input
             onChange={this.handleChange}
             name="password"
+            type="password"
             placeholder="password"
             />
                 <FormBtn
