@@ -1,6 +1,7 @@
 
 const express = require('express')
 const mongoose = require('mongoose')
+const path = require('path')
 require('dotenv').config()
 
 const routes = require('./routes')
@@ -12,6 +13,7 @@ const { authMiddleware } = require('./config/middleware/isAuthenticated')
 // Define middleware here
 
 app.use(authMiddleware)
+app.use(express.static(path.join(__dirname, 'client', 'build')))
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
@@ -29,6 +31,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/kittenhelper',
 
 // Add routes, both API and view
 app.use(routes)
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+})
 
 // Start the API server
 app.listen(PORT, function () {
