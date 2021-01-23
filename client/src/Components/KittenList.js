@@ -34,7 +34,7 @@ class KittenList extends Component {
   }
 
   viewKitten (id) {
-    this.props.history.push(`/view-Kitten/${id}`)
+    this.props.history.push(`/kitten/${id}`)
   }
 
   updateKitten (id) {
@@ -57,23 +57,22 @@ class KittenList extends Component {
                 <List>
                     <li> Name </li>
                     <li> Age </li>
-                    <li> Weight </li>
+                    <li> Breed</li>
                 </List>
 
                 {
-//  this.state.Kittens.map(
-//    Kitten =>
-//        <div key = {Kitten.id}>
-//            <li>  {Kitten.name} </li>
-//            <li> {Kitten.age}</li>
-//            <li> {Kitten.weight}</li>
-//            <li>
-//                <button onClick={ () => this.updateKitten(Kitten.id)} className="btn btn-info">Update </button>
-//                <button style={{ marginLeft: '10px' }} onClick={ () => this.deleteKitten(Kitten.id)} className="btn btn-danger">Delete </button>
-//                <button style={{ marginLeft: '10px' }} onClick={ () => this.viewKitten(Kitten.id)} className="btn btn-info">View </button>
-//            </li></div>
-//  )
-console.log(this.state.Kittens)
+ this.state.Kittens.map(
+   Kitten =>
+       <div key = {Kitten._id}>
+           <li>  {Kitten.name} </li>
+           <li> {Kitten.age}</li>
+           <li> {Kitten.weight}</li>
+           <li>
+               <button onClick={ () => this.updateKitten(Kitten._id)} className="btn btn-info">Update </button>
+               <button style={{ marginLeft: '10px' }} onClick={ () => this.deleteKitten(Kitten._id)} className="btn btn-danger">Delete </button>
+               <button style={{ marginLeft: '10px' }} onClick={ () => this.viewKitten(Kitten._id)} className="btn btn-info">View </button>
+           </li></div>
+ )
   }
             </div>
         </div>

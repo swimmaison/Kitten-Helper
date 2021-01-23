@@ -61,9 +61,9 @@ export default function ModalButton (props) {
 
   return (
       <div>
-          <button type="button" onClick={handleOpen}>
+          <Button type="button" onClick={handleOpen}>
               {props.label}
-          </button>
+          </Button>
           <Modal
         open={open}
         onClose={handleClose}

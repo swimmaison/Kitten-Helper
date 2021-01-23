@@ -5,8 +5,6 @@ import Weight from './Pages/Weight'
 import Feeding from './Pages/Feeding'
 
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
 import Navbar from './Components/Navbar'
 import 'fontsource-roboto'
 import logo from './logo.svg'
@@ -17,6 +15,7 @@ import Greet from './Components/Greet.js'
 import KittenList from './Components/KittenList'
 import NewKittenForm from './Components/NewKittenForm'
 import ModalButton from './Components/ModalButton'
+import Title from './Components/Title'
 
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
@@ -60,9 +59,7 @@ function KittenPage () {
           <img src={logo} className="App-logo" alt="logo" />
       </Grid>
       <Grid item xs={9}>
-          <Paper className="paper">
-              <Typography variant="h1">{kittenId}</Typography>
-          </Paper>
+          <Title kittenId={kittenId} />
       </Grid>
 
       <Switch>
@@ -78,7 +75,7 @@ function KittenPage () {
               </Grid>
               <Feeding kittenId = {kittenId}/>
           </Route>
-          <Route path={ `${path}/photo`}>
+          <Route path={[path, `${path}/photo`]}>
               <Grid item xs={12}>
                   <Navbar id = {kittenId} currPage="2"/>
               </Grid>
