@@ -4,21 +4,20 @@ import axios from 'axios'
 export default {
   // Gets all kittens
 
-  getKittens: function() {
-    return axios.get("/api/kittens",{
+  getKittens: function () {
+    return axios.get('/api/kittens', {
       headers: {
-        Authorization: localStorage.getItem("token")
+        Authorization: localStorage.getItem('token')
       }
-    });
+    })
   },
   // Gets the kittens with the given id
-  getKitten: function(id) {
-    return axios.get("/api/kittens/" + id, {
+  getKitten: function (id) {
+    return axios.get('/api/kittens/' + id, {
       headers: {
-        Authorization: localStorage.getItem("token")
+        Authorization: localStorage.getItem('token')
       }
-    } );
-
+    })
   },
   // Deletes the book with the given id
   deleteKittens: function (id) {
@@ -30,13 +29,12 @@ export default {
   },
   updateKitten: function (kittenData) {
     console.log(kittenData)
-    return axios.put("/api/kittens/"+ kittenData._id, kittenData);
-   },
-    updateKittens: function(kittenData) {
-    return axios.post("/api/kittens", kittenData);
+    return axios.put('/api/kittens/' + kittenData._id, kittenData)
   },
-  userLogin: function(userData) {
-    return axios.post("/api/login", userData);
-
+  updateKittens: function (kittenData) {
+    return axios.post('/api/kittens', kittenData)
+  },
+  userLogin: function (userData) {
+    return axios.post('/api/login', userData)
   }
 }
