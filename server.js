@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/kittenhelper',
     useCreateIndex: true,
     useFindAndModify: false
   }
-);
+)
 
 // Add routes, both API and view
 app.use(routes)
