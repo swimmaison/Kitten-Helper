@@ -11,7 +11,8 @@ const PORT = process.env.PORT || 3001
 const { authMiddleware } = require('./config/middleware/isAuthenticated')
 
 // Define middleware here
-
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 app.use(authMiddleware)
 app.use(express.static(path.join(__dirname, 'client', 'build')))
 
