@@ -18,11 +18,10 @@ import KittenList from './Components/KittenList'
 import NewKittenForm from './Components/NewKittenForm'
 import ModalButton from './Components/ModalButton'
 
-import Login from "./Pages/Login";
-import Signup from "./Pages/Signup"
+import Login from './Pages/Login'
+import Signup from './Pages/Signup'
 
-
-function App () {
+export default function App () {
   return (
       <div className="App">
           <Router>
@@ -38,12 +37,12 @@ function App () {
                   <Route path="/:kittenId">
                       <KittenPage />
                   </Route>
-    <Route path="/login">
-          <Login />
-          </Route>
-          <Route path="/signup">
-          <Signup />
-          </Route>
+                  <Route path="/login">
+                      <Login />
+                  </Route>
+                  <Route path="/signup">
+                      <Signup />
+                  </Route>
               </Switch>
           </Router>
 
@@ -85,6 +84,6 @@ function KittenPage () {
               </Grid>
               <PhotoGallery kittenId = {kittenId}/>
           </Route>
-
-
-export default App
+      </Switch>
+  </Router>
+}

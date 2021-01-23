@@ -34,8 +34,7 @@ const kittenSchema = new Schema({
     }
   }
 
-    
 })
 
-const Kitten = mongoose.model("Kitten", kittenSchema);
-module.exports = Kitten;
+const Kitten = mongoose.model('Kitten', kittenSchema)
+module.exports = Kitten
