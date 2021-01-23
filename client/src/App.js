@@ -15,7 +15,11 @@ import Greet from './Components/Greet.js'
 import KittenList from './Components/KittenList'
 import NewKittenForm from './Components/NewKittenForm'
 import ModalButton from './Components/ModalButton'
+
 import Title from './Components/Title'
+
+import LogoutBtn from './Components/LogoutBtn'
+
 
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
@@ -33,14 +37,19 @@ export default function App () {
 
                           <NewKittenForm /></ModalButton>
                   </Route>
+
                   <Route exact path={'/kitten/:kittenId'}>
                       <KittenPage />
                   </Route>
+
                   <Route exact path="/login">
                       <Login />
                   </Route>
                   <Route exact path="/signup">
                       <Signup />
+                  </Route>
+                  <Route path="/kitten/:kittenId">
+                      <KittenPage />
                   </Route>
               </Switch>
           </Router>
@@ -54,33 +63,35 @@ function KittenPage () {
 
   const { kittenId } = useParams()
 
-  return <Router>
+  return <>
       <Grid item xs={3}>
           <img src={logo} className="App-logo" alt="logo" />
       </Grid>
       <Grid item xs={9}>
           <Title kittenId={kittenId} />
+
       </Grid>
 
       <Switch>
           <Route exact path={`${path}/weight`}>
               <Grid item xs={12}>
-                  <Navbar id = {kittenId} currPage="1"/>
+                  <Navbar id={kittenId} currPage="1" />
               </Grid>
-              <Weight kittenId = {kittenId}/>
+              <Weight kittenId={kittenId} />
           </Route>
           <Route path={`${path}/feeding`}>
               <Grid item xs={12}>
-                  <Navbar id = {kittenId} currPage="0"/>
+                  <Navbar id={kittenId} currPage="0" />
               </Grid>
-              <Feeding kittenId = {kittenId}/>
+              <Feeding kittenId={kittenId} />
           </Route>
           <Route path={[path, `${path}/photo`]}>
+
               <Grid item xs={12}>
-                  <Navbar id = {kittenId} currPage="2"/>
+                  <Navbar id={kittenId} currPage="2" />
               </Grid>
-              <PhotoGallery kittenId = {kittenId}/>
+              <PhotoGallery kittenId={kittenId} />
           </Route>
       </Switch>
-  </Router>
+  </>
 }
