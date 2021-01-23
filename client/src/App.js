@@ -17,6 +17,8 @@ import AddKitten from './Components/AddKitten';
 import Greet from './Components/Greet.js'
 import KittenList from './Components/KittenList'
 import NewKittenForm from './Components/NewKittenForm'
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup"
 
 
 function App(){
@@ -48,7 +50,13 @@ function App(){
           <Route exact path="/photo">
             <PhotoGallery />
           </Route>
-    <Route exact path="/">
+          <Route exact path="/login">
+          <Login />
+          </Route>
+          <Route exact path="/signup">
+          <Signup />
+          </Route>
+    <Route path="/">
     <Greet></Greet>
       <KittenList><AddKitten /></KittenList>
     </Route>

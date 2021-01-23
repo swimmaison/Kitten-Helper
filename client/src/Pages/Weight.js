@@ -32,7 +32,7 @@ export default function Weight() {
   function loadKittens() {
     API.getKittens()
       .then(res => 
-        {console.log(res.data)
+        {console.log(res)
         setWeights(res.data[0].weights)
         setId(res.data[0]._id)
         }
