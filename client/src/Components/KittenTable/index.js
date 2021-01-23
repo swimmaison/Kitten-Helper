@@ -19,7 +19,7 @@ export default function KittenTable (props) {
   const classes = useStyles()
   let header
   const tabData = []
-  if (props.data[0] !== undefined) {
+  if (props.data && props.data[0] !== undefined) {
     header = Object.keys(props.data[0]).map((item, i) => <TableCell key={'header' + i}>{item}</TableCell>)
 
     for (let i = 0; i < props.data.length; i++) {

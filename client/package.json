@@ -35,7 +35,6 @@
       "@imaginary-cloud/react"
     ]
   },
-  "prettier": "@imaginary-cloud/prettier-config",
   "browserslist": {
     "production": [
       ">0.2%",

@@ -6,9 +6,6 @@ import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import Radio from '@material-ui/core/Radio'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-import Slider from '@material-ui/core/Slider'
 import Button from '@material-ui/core/Button'
 
 const defaultValues = {
