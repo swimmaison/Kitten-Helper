@@ -17,6 +17,7 @@ import Greet from './Components/Greet.js'
 import KittenList from './Components/KittenList'
 import NewKittenForm from './Components/NewKittenForm'
 import ModalButton from './Components/ModalButton'
+import LogoutBtn from './Components/LogoutBtn'
 
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
@@ -63,6 +64,7 @@ function KittenPage () {
           <Paper className="paper">
               <Typography variant="h1">{kittenId}</Typography>
           </Paper>
+          <LogoutBtn />
       </Grid>
 
       <Switch>
