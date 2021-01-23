@@ -16,8 +16,11 @@ import AddKitten from './Components/AddKitten'
 import Greet from './Components/Greet.js'
 import KittenList from './Components/KittenList'
 import NewKittenForm from './Components/NewKittenForm'
-import Title from './Components/Title'
 import ModalButton from './Components/ModalButton'
+
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup"
+
 
 function App () {
   return (
@@ -35,6 +38,12 @@ function App () {
                   <Route path="/:kittenId">
                       <KittenPage />
                   </Route>
+    <Route path="/login">
+          <Login />
+          </Route>
+          <Route path="/signup">
+          <Signup />
+          </Route>
               </Switch>
           </Router>
 
@@ -76,8 +85,6 @@ function KittenPage () {
               </Grid>
               <PhotoGallery kittenId = {kittenId}/>
           </Route>
-      </Switch>
-  </Router>
-}
+
 
 export default App

@@ -34,6 +34,7 @@ export default function Weight (props) {
         setWeights(res.data.weights)
         setId(res.data._id)
       }
+
       )
       .catch(err => console.log(err))
   };

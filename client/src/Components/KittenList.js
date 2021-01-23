@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from '@material-ui/core/Button';
+import { withRouter } from "react-router";
 
 
 class KittenList extends Component {
@@ -7,6 +8,15 @@ class KittenList extends Component {
     listitems: [
     ]
   };
+
+ 
+  componentDidMount() {
+    console.log(this.props)
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/signup")
+    }
+
+  }
 
 
   renderItems() {
@@ -34,4 +44,4 @@ class KittenList extends Component {
   }
 }
  
-export default KittenList;
+export default withRouter(KittenList);
