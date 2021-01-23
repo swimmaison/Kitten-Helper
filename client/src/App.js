@@ -35,6 +35,11 @@ export default function App () {
 
                           <NewKittenForm /></ModalButton>
                   </Route>
+
+                  <Route exact path={'/kitten/:kittenId'}>
+                      <KittenPage />
+                  </Route>
+
                   <Route exact path="/login">
                       <Login />
                   </Route>
@@ -80,7 +85,9 @@ function KittenPage () {
               </Grid>
               <Feeding kittenId={kittenId} />
           </Route>
-          <Route path={`${path}/photo`}>
+
+          <Route path={ `${path}/photo`}>
+
               <Grid item xs={12}>
                   <Navbar id={kittenId} currPage="2" />
               </Grid>
