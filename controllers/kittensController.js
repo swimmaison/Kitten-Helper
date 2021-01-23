@@ -1,6 +1,7 @@
-const db = require("../models");
+const db = require('../models')
 
 module.exports = {
+
     findAll: function(req, res) {
         if (!req.user) {
             console.log("user is not authorized!", req.user);
@@ -41,3 +42,4 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     }
 }
+

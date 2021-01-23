@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Button from '@material-ui/core/Button';
 import { withRouter } from "react-router";
- 
+
 
 class KittenList extends Component {
   state = {
     listitems: [
     ]
   };
+
  
   componentDidMount() {
     console.log(this.props)
@@ -16,6 +17,7 @@ class KittenList extends Component {
     }
 
   }
+
 
   renderItems() {
     if (this.state.listitems.length === 0) {
