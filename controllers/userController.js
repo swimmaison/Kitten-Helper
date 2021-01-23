@@ -4,7 +4,7 @@ const db = require('../models')
 
 module.exports = {
   signup: function (req, res) {
-    console.log(req.body)
+    console.log('new stuff', req.body)
     const newUser = new db.User(req.body)
     newUser.password = bcrypt.hashSync(req.body.password, 8)
     db.User.create(newUser)

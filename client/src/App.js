@@ -35,14 +35,14 @@ export default function App () {
 
                           <NewKittenForm /></ModalButton>
                   </Route>
-                  <Route path="/:kittenId">
-                      <KittenPage />
-                  </Route>
-                  <Route path="/login">
+                  <Route exact path="/login">
                       <Login />
                   </Route>
-                  <Route path="/signup">
+                  <Route exact path="/signup">
                       <Signup />
+                  </Route>
+                  <Route path="/kitten/:kittenId">
+                      <KittenPage />
                   </Route>
               </Switch>
           </Router>
@@ -56,7 +56,7 @@ function KittenPage () {
 
   const { kittenId } = useParams()
 
-  return <Router>
+  return <>
       <Grid item xs={3}>
           <img src={logo} className="App-logo" alt="logo" />
       </Grid>
@@ -70,22 +70,22 @@ function KittenPage () {
       <Switch>
           <Route exact path={`${path}/weight`}>
               <Grid item xs={12}>
-                  <Navbar id = {kittenId} currPage="1"/>
+                  <Navbar id={kittenId} currPage="1" />
               </Grid>
-              <Weight kittenId = {kittenId}/>
+              <Weight kittenId={kittenId} />
           </Route>
           <Route path={`${path}/feeding`}>
               <Grid item xs={12}>
-                  <Navbar id = {kittenId} currPage="0"/>
+                  <Navbar id={kittenId} currPage="0" />
               </Grid>
-              <Feeding kittenId = {kittenId}/>
+              <Feeding kittenId={kittenId} />
           </Route>
-          <Route path={[path, `${path}/photo`]}>
+          <Route path={`${path}/photo`}>
               <Grid item xs={12}>
-                  <Navbar id = {kittenId} currPage="2"/>
+                  <Navbar id={kittenId} currPage="2" />
               </Grid>
-              <PhotoGallery kittenId = {kittenId}/>
+              <PhotoGallery kittenId={kittenId} />
           </Route>
       </Switch>
-  </Router>
+  </>
 }
