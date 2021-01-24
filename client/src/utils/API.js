@@ -20,11 +20,11 @@ export default {
     })
   },
   // Deletes the book with the given id
-  deleteKittens: function (id) {
+  deleteKitten: function (id) {
     return axios.delete('/api/kittens/' + id)
   },
   // Saves a book to the database
-  saveKittens: function (kittenData) {
+  saveKitten: function (kittenData) {
     return axios.post('/api/kittens', kittenData)
   },
   updateKitten: function (kittenData) {

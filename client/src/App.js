@@ -7,7 +7,6 @@ import Feeding from './Pages/Feeding'
 import Grid from '@material-ui/core/Grid'
 import Navbar from './Components/Navbar'
 import 'fontsource-roboto'
-import logo from './logo.svg'
 
 import PhotoGallery from './Pages/PhotoGallery'
 
@@ -55,11 +54,8 @@ function KittenPage () {
 
   const { kittenId } = useParams()
 
-  return <>
-      <Grid item xs={3}>
-          <img src={logo} className="App-logo" alt="logo" />
-      </Grid>
-      <Grid item xs={9}>
+  return <Grid>
+      <Grid item xs={12}>
           <Title kittenId={kittenId} />
 
       </Grid>
@@ -85,5 +81,5 @@ function KittenPage () {
               <PhotoGallery kittenId={kittenId} />
           </Route>
       </Switch>
-  </>
+  </Grid>
 }

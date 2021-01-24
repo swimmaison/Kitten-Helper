@@ -14,11 +14,12 @@ export default function Feeding (props) {
     month = '0' + month
   };
   const today = year + '-' + month + '-' + day
-  const [feedings, setFeedings] = React.useState([])
+  const [feedings, setFeedings] = React.useState()
   const [date, setDate] = React.useState(today)
   const [poop, setPoop] = React.useState()
   const [amount, setAmount] = React.useState()
   const [id, setId] = React.useState()
+  const [modal, setModal] = React.useState(false)
 
   React.useEffect(() => {
     loadKittens()
@@ -52,7 +53,12 @@ export default function Feeding (props) {
     // When the form is submitted, prevent its default behavior, get recipes update the recipes state
     event.preventDefault()
     const numAmount = parseInt(amount)
-    const newFeedings = [...feedings, { date: date, amount: numAmount, quality: poop }]
+    let newFeedings
+    if (feedings !== undefined) {
+      newFeedings = [...feedings, { date: date, amount: numAmount, quality: poop }]
+    } else {
+      newFeedings = [{ date: date, amount: numAmount, quality: poop }]
+    }
     setFeedings(newFeedings)
     API.updateKitten(
       {
@@ -62,6 +68,13 @@ export default function Feeding (props) {
     ).then(res => { console.log(res.data) })
       .catch(err => console.log(err))
   }
+  const parentClose = () => {
+    setModal(false)
+  }
+  const parentOpen = () => {
+    setModal(true)
+  }
+
   return (
       <div className="root">
           <Grid container spacing={3}>
@@ -69,7 +82,7 @@ export default function Feeding (props) {
                   <Chart data={feedings}/>
               </Grid>
               <Grid item xs={12}>
-                  <ModalButton label="Enter New Feeding" state={false} onClick= {handleFormSubmit}>
+                  <ModalButton label="Enter New Feeding" toClose ={parentClose} toOpen ={parentOpen} state={modal} onClick= {handleFormSubmit}>
                       <NewFeedingForm onPoopChange={handlePoopChange} onDateChange={handleDateChange} onAmountChange={handleAmountChange}/>
                   </ModalButton>
               </Grid>

@@ -1,32 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
 import RadioGroup from '@material-ui/core/RadioGroup'
+import { DateSelector } from './Inputs'
 import Radio from '@material-ui/core/Radio'
 
-const defaultValues = {
-  name: '',
-  gender: '',
-  description: '',
-  kittenAge: Date
-}
-
 export default function newKittenFormn (props) {
-  const [formValues, setFormValues] = useState(defaultValues)
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setFormValues({
-      ...formValues,
-      [name]: value
-    })
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(formValues)
   }
 
   return (
@@ -38,18 +22,28 @@ export default function newKittenFormn (props) {
             name="name"
             label="Name"
             type="text"
-            value={formValues.name}
-            onChange={handleInputChange}
+            value={props.values.name}
+            onChange={props.onChange}
           />
               </Grid>
-
+              <Grid item>
+                  <TextField
+            id="description-input"
+            name="description"
+            label="Description"
+            type="text"
+            value={props.values.description}
+            onChange={props.onChange}
+          />
+              </Grid>
+              <br />
               <Grid item>
                   <FormControl>
                       <FormLabel>Gender</FormLabel>
                       <RadioGroup
               name="gender"
-              value={formValues.gender}
-              onChange={handleInputChange}
+              value={props.values.gender}
+              onChange={props.onChange}
               row
             >
                           <FormControlLabel
@@ -69,26 +63,16 @@ export default function newKittenFormn (props) {
               </Grid>
 
               <Grid item>
-                  <TextField
-            id="kittenAge"
-            name="Birth Date"
-            label=""
+                  <DateSelector
+            id="birthdate"
+            name="birthdate"
+            label="Birth Date"
             type="date"
-            defaultValue={formValues.kittenAge}
-            onChange={handleInputChange}
+            defaultValue={props.values.birthdate}
+            onChange={props.onChange}
           />
               </Grid>
 
-              <Grid item>
-                  <TextField
-            id="kittenWeight"
-            name="weight"
-            label="weight in Ounces"
-            type="number"
-            value={formValues.kittenWeight}
-            onChange={handleInputChange}
-          />
-              </Grid>
           </Grid>
       </form>
   )

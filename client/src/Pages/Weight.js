@@ -20,7 +20,8 @@ export default function Weight (props) {
   const [id, setId] = React.useState(props.kittenId)
   const [weights, setWeights] = React.useState([])
   const [date, setDate] = React.useState(today)
-  const [weight, setWeight] = React.useState()
+  const [weight, setWeight] = React.useState([])
+  const [modal, setModal] = React.useState(false)
 
   React.useEffect(() => {
     loadKittens()
@@ -43,7 +44,12 @@ export default function Weight (props) {
     // When the form is submitted, prevent its default behavior, get recipes update the recipes state
     event.preventDefault()
     const numWeight = parseInt(weight)
-    const newWeights = [...weights, { date: date, weight: numWeight }]
+    let newWeights
+    if (weights !== undefined) {
+      newWeights = [...weights, { date: date, weight: numWeight }]
+    } else {
+      newWeights = [{ date: date, weight: numWeight }]
+    }
     setWeights(newWeights)
     API.updateKitten(
       {
@@ -63,6 +69,13 @@ export default function Weight (props) {
     const numWeight = parseInt(value)
     setWeight(numWeight)
   }
+  const parentClose = () => {
+    setModal(false)
+  }
+  const parentOpen = () => {
+    setModal(true)
+  }
+
   return (
       <div className="root">
           <Grid container spacing={3}>
@@ -70,7 +83,7 @@ export default function Weight (props) {
                   <Chart data={weights} recMins={recMins} recMaxs={recMaxs}/>
               </Grid>
               <Grid item xs={12}>
-                  <ModalButton label="Enter New Weight" state={false} onClick= {handleFormSubmit}>
+                  <ModalButton label="Enter New Weight" toClose ={parentClose} toOpen ={parentOpen} state={modal} onClick= {handleFormSubmit}>
                       <NewWeightForm onDateChange={handleDateChange} onWeightChange={handleWeightChange}/>
                   </ModalButton>
               </Grid>

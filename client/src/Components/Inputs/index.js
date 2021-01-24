@@ -68,7 +68,7 @@ export function DateSelector (props) {
   };
   const today = year + '-' + month + '-' + day
 
-  const [date, setDate] = React.useState(today)
+  const [date, setDate] = React.useState(props.defaultValue || today)
 
   const handleChange = (event) => {
     setDate(event.target.value)
@@ -79,8 +79,9 @@ export function DateSelector (props) {
 
       <TextField
         id="date"
-        label="Date"
+        label={props.label}
         type="date"
+        name={props.name}
         defaultValue= {date}
         className={classes.textField}
         InputLabelProps={{

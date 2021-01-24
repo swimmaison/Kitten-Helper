@@ -10,6 +10,9 @@ const kittenSchema = new Schema({
     type: String
 
   },
+  gender: {
+    type: String
+  },
   birthdate: {
     type: String
   },

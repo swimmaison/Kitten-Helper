@@ -15,6 +15,7 @@ const kittenSeed = [{
   name: 'Kitten 1',
   description: 'Tabby',
   birthdate: '2021-12-10',
+  gender: 'male',
   weights: [{
     date: '2021-01-18',
     weight: 80
