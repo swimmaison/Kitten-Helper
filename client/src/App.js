@@ -18,9 +18,6 @@ import ModalButton from './Components/ModalButton'
 
 import Title from './Components/Title'
 
-import LogoutBtn from './Components/LogoutBtn'
-
-
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 
