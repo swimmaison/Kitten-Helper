@@ -13,7 +13,7 @@ mongoose.connect(
 
 const kittenSeed = [{
   name: 'Kitten 1',
-  breed: 'American Shorthair',
+  description: 'Tabby',
   birthdate: '2021-12-10',
   weights: [{
     date: '2021-01-18',

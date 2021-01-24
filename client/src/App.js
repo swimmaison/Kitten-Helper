@@ -10,11 +10,9 @@ import 'fontsource-roboto'
 import logo from './logo.svg'
 
 import PhotoGallery from './Pages/PhotoGallery'
-import AddKitten from './Components/AddKitten'
+
 import Greet from './Components/Greet.js'
 import KittenList from './Components/KittenList'
-import NewKittenForm from './Components/NewKittenForm'
-import ModalButton from './Components/ModalButton'
 
 import Title from './Components/Title'
 
@@ -29,10 +27,7 @@ export default function App () {
               <Switch>
                   <Route exact path="/">
                       <Greet></Greet>
-                      <KittenList><AddKitten /></KittenList>
-                      <ModalButton label="Enter New Kitten" state={false}>
-
-                          <NewKittenForm /></ModalButton>
+                      <KittenList />
                   </Route>
 
                   <Route exact path={'/kitten/:kittenId'}>

@@ -6,13 +6,12 @@ const kittenSchema = new Schema({
   name: {
     type: String
   },
-  breed: {
+  description: {
     type: String
 
   },
   birthdate: {
-    type: Number
-
+    type: String
   },
   weights: {
     date: {

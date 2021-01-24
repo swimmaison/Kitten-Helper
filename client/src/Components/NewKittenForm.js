@@ -6,16 +6,15 @@ import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import Radio from '@material-ui/core/Radio'
-import Button from '@material-ui/core/Button'
 
 const defaultValues = {
   name: '',
   gender: '',
-  kittenWeight: '',
+  description: '',
   kittenAge: Date
 }
 
-const Form = () => {
+export default function newKittenFormn (props) {
   const [formValues, setFormValues] = useState(defaultValues)
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -90,12 +89,7 @@ const Form = () => {
             onChange={handleInputChange}
           />
               </Grid>
-              <Button variant="contained" color="primary" type="submit">
-                  Submit
-              </Button>
           </Grid>
       </form>
   )
 }
-
-export default Form

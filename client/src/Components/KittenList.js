@@ -3,7 +3,15 @@ import React, { Component } from 'react'
 // import Button from '@material-ui/core/Button'
 import { withRouter } from 'react-router'
 import API from '../utils/API'
-import List from '@material-ui/core/List'
+import NewKittenForm from './NewKittenForm'
+import ModalButton from './ModalButton'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import { Container } from '@material-ui/core'
+import 'fontsource-roboto'
 
 class KittenList extends Component {
   constructor (props) {
@@ -48,33 +56,29 @@ class KittenList extends Component {
   render () {
     return (
         <div>
-            <h2 className="text-center">Kittens List</h2>
-            <div className = "row">
-                <button className="btn btn-primary" onClick={this.addKitten}> Add Kitten</button>
-            </div>
-            <br></br>
-            <div>
-                <List>
-                    <li> Name </li>
-                    <li> Age </li>
-                    <li> Breed</li>
-                </List>
-
+            <Container>
                 {
  this.state.Kittens.map(
    Kitten =>
-       <div key = {Kitten._id}>
-           <li>  {Kitten.name} </li>
-           <li> {Kitten.age}</li>
-           <li> {Kitten.weight}</li>
-           <li>
-               <button onClick={ () => this.updateKitten(Kitten._id)} className="btn btn-info">Update </button>
-               <button style={{ marginLeft: '10px' }} onClick={ () => this.deleteKitten(Kitten._id)} className="btn btn-danger">Delete </button>
-               <button style={{ marginLeft: '10px' }} onClick={ () => this.viewKitten(Kitten._id)} className="btn btn-info">View </button>
-           </li></div>
+       <Card variant = "outlined" key = {Kitten._id}>
+           <CardContent>
+               <Typography gutterBottom variant="h3" component="h3">{Kitten.name}</Typography>
+               <Typography variant="h5" component="p"> {Kitten.description}</Typography>
+               <Typography variant="h5" component="p"> {Kitten.birthdate}</Typography>
+           </CardContent>
+           <CardActions>
+               <Button onClick={ () => this.updateKitten(Kitten._id)} variant="contained" color="primary">Update </Button>
+               <Button onClick={ () => this.deleteKitten(Kitten._id)} variant="contained" color="secondary">Delete </Button>
+               <Button onClick={ () => this.viewKitten(Kitten._id)} variant="contained" color="default">View </Button>
+           </CardActions>
+       </Card>
  )
   }
-            </div>
+                <br />
+                <ModalButton label="Enter New Kitten" state={false}>
+
+                    <NewKittenForm /></ModalButton>
+            </Container>
         </div>
     )
   }
