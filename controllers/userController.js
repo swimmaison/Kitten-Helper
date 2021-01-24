@@ -14,7 +14,7 @@ module.exports = {
         return res.json({
           _id: user._id,
           token: jwt.sign(
-            { email: user.email, username: user.username, _id: user._id },
+            { email: user.email, _id: user._id },
             process.env.JWT_SECRET
           )
         })
@@ -41,7 +41,7 @@ module.exports = {
         }
         return res.json({
           token: jwt.sign(
-            { email: user.email, username: user.username, _id: user._id },
+            { email: user.email, _id: user._id },
             process.env.JWT_SECRET
           )
         })
