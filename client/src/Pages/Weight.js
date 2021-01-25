@@ -8,8 +8,8 @@ import { NewWeightForm } from '../Components/Forms'
 import 'fontsource-roboto'
 import API from '../utils/API'
 
-const recMins = [50, 60, 70, 80]
-const recMaxs = [80, 90, 100, 110]
+let recMins = []
+let recMaxs = []
 
 export default function Weight (props) {
   let [month, day, year] = new Date().toLocaleDateString('en-US').split('/')
@@ -22,24 +22,47 @@ export default function Weight (props) {
   const [date, setDate] = React.useState(today)
   const [weight, setWeight] = React.useState([])
   const [modal, setModal] = React.useState(false)
+  const [birthdate, setBirthdate] = React.useState()
 
   React.useEffect(() => {
     loadKittens()
   }, [])
+  React.useEffect(() => {
+    recMins = []
+    recMaxs = []
+    calcAges()
+  }, [weights])
 
   // Loads all kittens
   function loadKittens () {
     API.getKitten(props.kittenId)
       .then(res => {
         console.log(res.data)
+        setBirthdate(res.data.birthdate)
         setWeights(res.data.weights)
         setId(res.data._id)
+        calcAges()
       }
 
       )
       .catch(err => console.log(err))
   };
 
+  function calcAges () {
+    weights.forEach(element => {
+      const day = Date.parse(element.date)
+      const birth = Date.parse(birthdate)
+      const age = (Math.floor((day - birth) / (24 * 60 * 60 * 1000)))
+      if (age < 7) {
+        recMins.push(50)
+        recMaxs.push(150)
+      } else if (age < 14 && age >= 7) {
+        recMins.push(150)
+        recMaxs.push(250)
+      }
+      setWeight(recMins + recMaxs)
+    })
+  }
   const handleFormSubmit = event => {
     // When the form is submitted, prevent its default behavior, get recipes update the recipes state
     event.preventDefault()
@@ -50,13 +73,16 @@ export default function Weight (props) {
     } else {
       newWeights = [{ date: date, weight: numWeight }]
     }
+    calcAges()
     setWeights(newWeights)
     API.updateKitten(
       {
         _id: id,
         weights: newWeights
       }
-    ).then(res => { console.log(res.data) })
+    ).then(res => {
+      console.log(res.data)
+    })
       .catch(err => console.log(err))
   }
   const handleDateChange = event => {

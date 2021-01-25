@@ -19,11 +19,25 @@ export default function KittenTable (props) {
   const classes = useStyles()
   let header
   const tabData = []
+
   if (props.data && props.data[0] !== undefined) {
+    function compare (a, b) {
+      // Use toUpperCase() to ignore character casing
+      const dateA = a.date
+      const dateB = b.date
+      let comparison = 0
+      if (dateA > dateB) {
+        comparison = 1
+      } else if (dateA < dateB) {
+        comparison = -1
+      }
+      return comparison
+    }
+    const sortedData = props.data.sort(compare)
     header = Object.keys(props.data[0]).map((item, i) => <TableCell key={'header' + i}>{item}</TableCell>)
 
     for (let i = 0; i < props.data.length; i++) {
-      const entries = Object.keys(props.data[0]).map((column) => <TableCell key={column + 'cell' + i}>{props.data[i][column]}</TableCell>
+      const entries = Object.keys(props.data[0]).map((column) => <TableCell key={column + 'cell' + i}>{sortedData[i][column]}</TableCell>
       )
       tabData.push(<TableRow key={'row' + i}>{entries}</TableRow>)
     }

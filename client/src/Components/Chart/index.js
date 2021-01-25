@@ -1,12 +1,26 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
 export default function Chart (props) {
-  console.log(props.data)
+  let data = []
   if (typeof props.data === 'object' && props.data !== null && props.data !== undefined) {
-    const dates = props.data.map((obj) => obj.date)
-    const points = props.data.map((obj) => obj[Object.keys(obj)[1]])
-    const data = {
+    function compare (a, b) {
+      // Use toUpperCase() to ignore character casing
+      const dateA = a.date
+      const dateB = b.date
+      let comparison = 0
+      if (dateA > dateB) {
+        comparison = 1
+      } else if (dateA < dateB) {
+        comparison = -1
+      }
+      return comparison
+    }
+    const sortedData = props.data.sort(compare)
+    const dates = sortedData.map((obj) => obj.date)
+    const points = sortedData.map((obj) => obj[Object.keys(obj)[1]])
+    data = {
       labels: dates,
       datasets: []
     }
@@ -39,8 +53,6 @@ export default function Chart (props) {
         backgroundColor: 'rgba(100,255,150,0.1)'
       }]
     }
-    return <div> <Line data = {data} /></div>
-  } else {
-    return <div> <Line data={[]}/></div>
   }
+  return <div> <Line data = {data} key={props.recMins}/></div>
 }
