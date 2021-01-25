@@ -17,7 +17,7 @@ export default function Feeding (props) {
   const today = year + '-' + month + '-' + day
   const [feedings, setFeedings] = React.useState([])
   const [date, setDate] = React.useState(today)
-  const [poop, setPoop] = React.useState()
+  const [poop, setPoop] = React.useState({ poopColor: 'Normal', poopTexture: 'Normal' })
   const [amount, setAmount] = React.useState()
   const [id, setId] = React.useState(props.kittenId)
   const [modal, setModal] = React.useState(false)
@@ -43,8 +43,8 @@ export default function Feeding (props) {
     setDate(value)
   }
   const handlePoopChange = event => {
-    const { value } = event.target
-    setPoop(value)
+    const { name, value } = event.target
+    setPoop({ ...poop, [name]: value })
   }
   const handleAmountChange = event => {
     const { value } = event.target
@@ -56,9 +56,9 @@ export default function Feeding (props) {
     const numAmount = parseInt(amount)
     let newFeedings
     if (feedings !== undefined) {
-      newFeedings = [...feedings, { date: date, amount: numAmount, quality: poop }]
+      newFeedings = [...feedings, { date: date, amount: numAmount, quality: poop.poopTexture, color: poop.poopColor }]
     } else {
-      newFeedings = [{ date: date, amount: numAmount, quality: poop }]
+      newFeedings = [{ date: date, amount: numAmount, quality: poop.poopTexture, color: poop.poopColor }]
     }
     setFeedings(newFeedings)
     API.updateKitten(

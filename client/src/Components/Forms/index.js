@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     flexWrap: 'wrap',
-    maxWidth: 500,
+    maxWidth: '35ch',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center'

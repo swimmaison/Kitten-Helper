@@ -28,33 +28,61 @@ const useStyles = makeStyles((theme) => ({
 
 export function PoopSelect (props) {
   const classes = useStyles()
-  const [poop, setPoop] = React.useState('')
+  const [poop, setPoop] = React.useState({ poopColor: 'Normal', poopTexture: 'Normal' })
 
   const handleChange = (event) => {
-    setPoop(event.target.value)
+    console.log(event)
+    setPoop({ ...poop, [event.target.name]: event.target.value })
     props.onChange(event)
   }
 
   return (
-      <div>
+      <div className={classes.container}>
           <FormControl className={classes.formControl}>
-              <InputLabel id="poop-quality-label">
-                  Poop Quality
+              <InputLabel id="poop-color-label">
+                  Color
               </InputLabel>
               <Select
-                labelId="poop-quality-label"
-                id="poop-quality-selector"
-                value={poop}
+                labelId="poop-color-label"
+                id="poop-color-selector"
+                value={poop.poopColor}
+                name="poopColor"
                 onChange={handleChange}
                 displayEmpty
                 className={classes.selectEmpty}
         >
                   <MenuItem value={'Normal'}>Normal</MenuItem>
-                  <MenuItem value={'Green'}>More green than normal</MenuItem>
-                  <MenuItem value={'Liquid'}>More liquid than normal</MenuItem>
-                  <MenuItem value={'Hard'}>Harder than normal</MenuItem>
+                  <MenuItem value={'Green'}>Green</MenuItem>
+                  <MenuItem value={'Yellow'}>Yellow</MenuItem>
+                  <MenuItem value={'Beige'}>Beige</MenuItem>
+                  <MenuItem value={'Black'}>Black</MenuItem>
+                  <MenuItem value={'Red'}>Red</MenuItem>
               </Select>
               <FormHelperText>Mark any changes in the kitten&apos;s bowel movement</FormHelperText>
+              <FormControl className={classes.formControl}>
+                  <InputLabel id="poop-texture-label">
+                      Texture
+                  </InputLabel>
+                  <Select
+                labelId="poop-texture-label"
+                id="poop-texture-selector"
+                value={poop.poopTexture}
+                name="poopTexture"
+                onChange={handleChange}
+                displayEmpty
+                className={classes.selectEmpty}
+        >
+                      <MenuItem value={'Normal'}>Normal</MenuItem>
+                      <MenuItem value={'Mucousy'}>Mucousy</MenuItem>
+                      <MenuItem value={'Curdled'}>Curdled</MenuItem>
+                      <MenuItem value={'Liquid'}>Liquid</MenuItem>
+                      <MenuItem value={'Soft'}>Soft</MenuItem>
+                      <MenuItem value={'Hard'}>Hard</MenuItem>
+
+                  </Select>
+                  <FormHelperText>Mark any changes in the kitten&apos;s bowel movement</FormHelperText>
+              </FormControl>
+
           </FormControl>
       </div>
   )
