@@ -49,19 +49,33 @@ export default function Weight (props) {
   };
 
   function calcAges () {
-    weights.forEach(element => {
-      const day = Date.parse(element.date)
-      const birth = Date.parse(birthdate)
-      const age = (Math.floor((day - birth) / (24 * 60 * 60 * 1000)))
-      if (age < 7) {
-        recMins.push(50)
-        recMaxs.push(150)
-      } else if (age < 14 && age >= 7) {
-        recMins.push(150)
-        recMaxs.push(250)
-      }
-      setWeight(recMins + recMaxs)
-    })
+    if (weights !== undefined) {
+      weights.forEach(element => {
+        const day = Date.parse(element.date)
+        const birth = Date.parse(birthdate)
+        const age = (Math.floor((day - birth) / (7 * 24 * 60 * 60 * 1000)))
+        if (age === 0) {
+          recMins.push(50)
+          recMaxs.push(150)
+        } else if (age === 1) {
+          recMins.push(150)
+          recMaxs.push(250)
+        } else if (age === 2) {
+          recMins.push(250)
+          recMaxs.push(350)
+        } else if (age === 3) {
+          recMins.push(350)
+          recMaxs.push(450)
+        } else if (age === 4) {
+          recMins.push(450)
+          recMaxs.push(550)
+        } else if (age === 5) {
+          recMins.push(550)
+          recMaxs.push(850)
+        }
+        setWeight(recMins + recMaxs)
+      })
+    }
   }
   const handleFormSubmit = event => {
     // When the form is submitted, prevent its default behavior, get recipes update the recipes state

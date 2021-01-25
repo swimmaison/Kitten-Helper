@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import { PoopSelect, DateSelector } from '../Inputs'
+import { Button } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -70,8 +71,8 @@ export function Input (props) {
 
 export function FormBtn (props) {
   return (
-      <button {...props} style={{ float: 'right', marginBottom: 10 }} className="btn btn-success">
+      <Button {...props} variant="outlined" style={{ float: 'right', marginBottom: 10 }} color="secondary">
           {props.children}
-      </button>
+      </Button>
   )
 }

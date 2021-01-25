@@ -124,10 +124,6 @@ class KittenList extends Component {
     }
   }
 
-  addKitten () {
-
-  }
-
   render () {
     return (
         <div>

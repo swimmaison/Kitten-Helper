@@ -6,6 +6,7 @@ import API from '../../utils/API'
 import logo from '../../logo.svg'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
+import LogoutBtn from '../LogoutBtn'
 
 const useStyles = makeStyles((theme) => ({
   img: {
@@ -38,8 +39,11 @@ export default function Title (props) {
                   <img src={logo} className={classes.img} alt="Kitten Helper Logo" />
               </a>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={5}>
               <Typography variant="h1">{name}</Typography>
+          </Grid>
+          <Grid item xs={1}>
+              <LogoutBtn />
           </Grid>
       </Grid>
   </Paper>
