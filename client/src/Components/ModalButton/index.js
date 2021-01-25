@@ -35,10 +35,12 @@ export default function ModalButton (props) {
   const classes = useStyles()
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle)
-  const [open, setOpen] = React.useState(props.state)
+  const [open, setOpen] = React.useState(false)
 
   useEffect(() => {
-    setOpen(props.state)
+    if (props.state !== undefined) {
+      setOpen(props.state)
+    }
   })
 
   const handleOpen = () => {

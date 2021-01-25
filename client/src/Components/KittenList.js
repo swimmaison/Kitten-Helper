@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { Container } from '@material-ui/core'
 import 'fontsource-roboto'
-import Notification from './Notification'
+import LogooutBtn from './LogoutBtn'
 
 let [month, day, year] = new Date().toLocaleDateString('en-US').split('/')
 if (parseInt(month) < 10) {
@@ -114,6 +114,7 @@ class KittenList extends Component {
       ).then(res => {
         console.log(res.data)
         this.setState({ isUpdate: false })
+        this.loadKittens()
       })
         .catch(err => console.log(err))
     } else {
@@ -142,7 +143,6 @@ class KittenList extends Component {
                <Button onClick={ () => this.updateKitten(Kitten._id)} variant="contained" color="primary">Update </Button>
                <Button onClick={ () => this.deleteKitten(Kitten._id)} variant="contained" color="secondary">Delete </Button>
                <Button onClick={ () => this.viewKitten(Kitten._id)} variant="contained" color="default">View </Button>
-               <Notification />
            </CardActions>
        </Card>
  )
@@ -151,6 +151,7 @@ class KittenList extends Component {
                 <ModalButton onClick={this.handleFormSubmit} toOpen={this.parentOpen} toClose={this.parentClose}label="Enter New Kitten" state={this.state.isOpen}>
 
                     <NewKittenForm values={this.state.formValues} onChange={this.handleInputChange} /></ModalButton>
+                <LogooutBtn />
             </Container>
             <br /> <br />
         </div>

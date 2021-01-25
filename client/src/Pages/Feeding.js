@@ -7,6 +7,7 @@ import ModalButton from '../Components/ModalButton'
 import { NewFeedingForm } from '../Components/Forms'
 import 'fontsource-roboto'
 import API from '../utils/API'
+import Notification from '../Components/Notification'
 
 export default function Feeding (props) {
   let [month, day, year] = new Date().toLocaleDateString('en-US').split('/')
@@ -85,6 +86,8 @@ export default function Feeding (props) {
                   <ModalButton label="Enter New Feeding" toClose ={parentClose} toOpen ={parentOpen} state={modal} onClick= {handleFormSubmit}>
                       <NewFeedingForm onPoopChange={handlePoopChange} onDateChange={handleDateChange} onAmountChange={handleAmountChange}/>
                   </ModalButton>
+                  <br></br>
+                  <Notification />
               </Grid>
               <Grid item xs={12}>
                   <KittenTable data={feedings} />
