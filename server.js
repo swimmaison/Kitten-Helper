@@ -1,4 +1,3 @@
-
 const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
@@ -7,6 +6,37 @@ require('dotenv').config()
 const routes = require('./routes')
 const app = express()
 const PORT = process.env.PORT || 3001
+
+const cron = require('node-cron')
+const nodemailer = require('nodemailer')
+
+// setting up the transporter
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'kittenhelper1@gmail.com',
+    pass: 'Kittenhelper1!'
+  }
+})
+
+// configuring the mail option
+const mailOptions = {
+  from: 'kittenhelper1@gmail.com',
+  to: 'swim.maison@gmail.com',
+  subject: 'Daily 2 Hour Notification',
+  text: 'Hey Specified User, this is your daily 2 hour notification reminder, that is delivered to users every two hours'
+}
+
+// send mail affixed with cron job, this example is currently configured to deliver emails every minute instead of two hours to display the fact that nodemailer is working
+cron.schedule('* * * * *', () => {
+  transporter.sendMail(mailOptions, function (err, data) {
+    if (err) {
+      console.log('Error Occurs')
+    } else {
+      console.log('Email Sent!')
+    }
+  })
+})
 
 const { authMiddleware } = require('./config/middleware/isAuthenticated')
 
