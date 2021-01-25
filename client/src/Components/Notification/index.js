@@ -7,7 +7,6 @@ import API from '../../utils/API'
 
 export default function Notification (props) {
   const [email, setEmail] = React.useState()
-  const [modal, setModal] = React.useState(false)
 
   const handleChange = event => {
     const { value } = event.target
@@ -15,12 +14,10 @@ export default function Notification (props) {
   }
   const stopNotifications = () => {
     API.stopEmails().then(res => {
-      parentClose()
-      console.log('Notifications stopped')
     }).catch(err => {
-      parentClose()
       console.log(err)
     })
+    alert('Notifications stopped')
   }
 
   // configuring the mail option
@@ -30,14 +27,8 @@ export default function Notification (props) {
     console.log(email)
     API.startEmails(email).then((res) => console.log(res)).catch(err => console.log(err))
   }
-  const parentClose = () => {
-    setModal(false)
-  }
-  const parentOpen = () => {
-    setModal(true)
-  }
 
-  return <ModalButton label='Notification Options' toOpen={parentOpen} toClose={parentClose} state={modal} onClick={handleSubmit}>
+  return <ModalButton label='Notification Options' onClick={handleSubmit}>
       <Typography component="h1" variant="h5">
           Email Notifications
       </Typography>
