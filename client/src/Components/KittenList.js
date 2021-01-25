@@ -35,7 +35,6 @@ class KittenList extends Component {
       isUpdate: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.addKitten = this.addKitten.bind(this)
     this.updateKitten = this.updateKitten.bind(this)
     this.deleteKitten = this.deleteKitten.bind(this)
     this.parentClose = this.parentClose.bind(this)
