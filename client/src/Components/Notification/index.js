@@ -1,48 +1,43 @@
 import React from 'react'
-import cron from 'node-cron'
-import nodemailer from 'nodemailer'
 import ModalButton from '../ModalButton'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
+import { Button } from '@material-ui/core'
+import API from '../../utils/API'
 
 export default function Notification (props) {
   const [email, setEmail] = React.useState()
+  const [modal, setModal] = React.useState(false)
+
   const handleChange = event => {
     const { value } = event.target
     setEmail(value)
   }
-
-  //   setting up the transporter
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'kittenhelper1@gmail.com',
-      pass: process.env.EMAIL_PASS
-    }
-  })
+  const stopNotifications = () => {
+    API.stopEmails().then(res => {
+      parentClose()
+      console.log('Notifications stopped')
+    }).catch(err => {
+      parentClose()
+      console.log(err)
+    })
+  }
 
   // configuring the mail option
 
   // send mail affixed with cron job, this example is currently configured to deliver emails every minute instead of two hours to display the fact that nodemailer is working
   const handleSubmit = () => {
-    const mailOptions = {
-      from: 'kittenhelper1@gmail.com',
-      to: email,
-      subject: 'Daily 2 Hour Notification',
-      text: 'Hey Specified User, this is your daily 2 hour notification reminder, that is delivered to users every two hours'
-    }
-    cron.schedule('* * * * *', () => {
-      transporter.sendMail(mailOptions, function (err, data) {
-        if (err) {
-          console.log('Error Occurs')
-        } else {
-          console.log('Email Sent!')
-        }
-      })
-    })
+    console.log(email)
+    API.startEmails(email).then((res) => console.log(res)).catch(err => console.log(err))
+  }
+  const parentClose = () => {
+    setModal(false)
+  }
+  const parentOpen = () => {
+    setModal(true)
   }
 
-  return <ModalButton label='Notification Options' onClick={handleSubmit}>
+  return <ModalButton label='Notification Options' toOpen={parentOpen} toClose={parentClose} state={modal} onClick={handleSubmit}>
       <Typography component="h1" variant="h5">
           Email Notifications
       </Typography>
@@ -58,5 +53,6 @@ export default function Notification (props) {
                autoFocus
                onChange= {handleChange}
              />
+      <Button variant="outlined" color="secondary" onClick={stopNotifications}>Stop Notifications</Button>
   </ModalButton>
 }

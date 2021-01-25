@@ -36,5 +36,12 @@ export default {
   },
   userLogin: function (userData) {
     return axios.post('/api/login', userData)
+  },
+  startEmails: function (email) {
+    console.log(email)
+    return axios.post('/api/email/start/' + email, email)
+  },
+  stopEmails: function () {
+    return axios.post('/api/email/stop')
   }
 }
