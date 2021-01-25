@@ -14,11 +14,11 @@ export default function Feeding (props) {
     month = '0' + month
   };
   const today = year + '-' + month + '-' + day
-  const [feedings, setFeedings] = React.useState()
+  const [feedings, setFeedings] = React.useState([])
   const [date, setDate] = React.useState(today)
   const [poop, setPoop] = React.useState()
   const [amount, setAmount] = React.useState()
-  const [id, setId] = React.useState()
+  const [id, setId] = React.useState(props.kittenId)
   const [modal, setModal] = React.useState(false)
 
   React.useEffect(() => {

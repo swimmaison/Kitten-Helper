@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { Container } from '@material-ui/core'
 import 'fontsource-roboto'
+import Notification from './Notification'
 
 let [month, day, year] = new Date().toLocaleDateString('en-US').split('/')
 if (parseInt(month) < 10) {
@@ -141,6 +142,7 @@ class KittenList extends Component {
                <Button onClick={ () => this.updateKitten(Kitten._id)} variant="contained" color="primary">Update </Button>
                <Button onClick={ () => this.deleteKitten(Kitten._id)} variant="contained" color="secondary">Delete </Button>
                <Button onClick={ () => this.viewKitten(Kitten._id)} variant="contained" color="default">View </Button>
+               <Notification />
            </CardActions>
        </Card>
  )

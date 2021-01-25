@@ -59,8 +59,6 @@ export function NewFeedingForm (props) {
   </form>
 }
 
-export function NotificationForm () {}
-
 export function Input (props) {
   return (
       <div className="form-group">

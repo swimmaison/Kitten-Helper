@@ -43,12 +43,16 @@ export default function ModalButton (props) {
 
   const handleOpen = () => {
     setOpen(true)
-    props.toOpen()
+    if (props.toOpen !== undefined) {
+      props.toOpen()
+    }
   }
 
   const handleClose = () => {
     setOpen(false)
-    props.toClose()
+    if (props.toClose !== undefined) {
+      props.toClose()
+    }
   }
 
   const handleSubmit = (event) => {
