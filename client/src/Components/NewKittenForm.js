@@ -48,13 +48,13 @@ export default function newKittenFormn (props) {
             >
                           <FormControlLabel
                 key="male"
-                value="male"
+                value="Male"
                 control={<Radio size="small" />}
                 label="Male"
               />
                           <FormControlLabel
                 key="female"
-                value="female"
+                value="Female"
                 control={<Radio size="small" />}
                 label="Female"
               />
