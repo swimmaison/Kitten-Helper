@@ -45,15 +45,44 @@ class KittenList extends Component {
   }
 
   componentDidMount () {
-    this.loadKittens()
     if (!localStorage.getItem('token')) {
       this.props.history.push('/signup')
     }
+    this.loadKittens()
+  }
+
+  parseJwt (token) {
+    const base64Url = token.split('.')[1]
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    }).join(''))
+    const payload = JSON.parse(jsonPayload)
+    return payload.email
   }
 
   loadKittens () {
+    let user
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token')
+      user = this.parseJwt(token)
+    }
+    this.setState({
+      formValues:
+      {
+        ...this.state.formValues,
+        user: user
+      }
+    })
+    console.log(user)
     API.getKittens().then((res) => {
-      this.setState({ Kittens: res.data })
+      const userKittens = []
+      res.data.forEach(kitten => {
+        if (kitten.user === user) {
+          userKittens.push(kitten)
+        }
+      })
+      this.setState({ Kittens: userKittens })
       console.log(res.data)
     })
   }
@@ -67,7 +96,6 @@ class KittenList extends Component {
         [name]: value
       }
     })
-    console.log(this.state.formValues)
   }
 
   deleteKitten (id) {
@@ -105,14 +133,12 @@ class KittenList extends Component {
   }
 
   handleFormSubmit (event) {
-  // When the form is submitted, prevent its default behavior, get recipes update the recipes state
+  // When the form is submitted, prevent its default behavior, add user auth token and save it with the data
     event.preventDefault()
-    console.log(this.state.isUpdate)
     if (this.state.isUpdate === true) {
       API.updateKitten(
         this.state.formValues
       ).then(res => {
-        console.log(res.data)
         this.setState({ isUpdate: false })
         this.loadKittens()
       })

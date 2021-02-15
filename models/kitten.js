@@ -34,6 +34,9 @@ const kittenSchema = new Schema({
     quality: {
       type: String
     }
+  },
+  user: {
+    type: String
   }
 
 })
