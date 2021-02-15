@@ -29,16 +29,14 @@ export default function App () {
                       <KittenList />
                   </Route>
 
-                  <Route exact path={'/kitten/:kittenId'}>
-                      <KittenPage />
-                  </Route>
-
                   <Route exact path="/login">
                       <Login />
                   </Route>
+
                   <Route exact path="/signup">
                       <Signup />
                   </Route>
+
                   <Route path="/kitten/:kittenId">
                       <KittenPage />
                   </Route>
@@ -67,12 +65,14 @@ function KittenPage () {
               </Grid>
               <Weight kittenId={kittenId} />
           </Route>
+
           <Route path={`${path}/feeding`}>
               <Grid item xs={12}>
                   <Navbar id={kittenId} currPage="0" />
               </Grid>
               <Feeding kittenId={kittenId} />
           </Route>
+
           <Route path={[path, `${path}/photo`]}>
 
               <Grid item xs={12}>
